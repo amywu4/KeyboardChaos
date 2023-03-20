@@ -37,11 +37,13 @@ let random_prompt ts =
 let rule_name rule = rule.name
 let rule_description rule = rule.description
 
-let get_rules_names ts =
-  ts.rules |> List.map (fun x -> x.name) |> List.sort_uniq compare
+(*let get_rules_names ts = ts.rules |> List.map (fun x -> x.name) |>
+  List.sort_uniq compare
 
-let get_rules_descriptions ts =
-  ts.rules |> List.map (fun x -> x.description) |> List.sort_uniq compare
+  let get_rules_descriptions ts = ts.rules |> List.map (fun x -> x.description)
+  |> List.sort_uniq compare*)
+
+let get_rules ts = ts.rules
 
 let random_rule ts =
   if List.length ts.rules = 0 then raise NoRules
