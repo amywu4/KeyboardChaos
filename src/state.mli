@@ -1,10 +1,12 @@
 type t
 
+exception NoRules
+
 val init_state : Text_shooting.t -> t
 (** [init_state a] is the initial state of the game when playing text shooting
     [a]. In that state the player is currently playing level one, they have 0
-    points, and they currently have one randomly chosen prompt and rule to
-    follow. *)
+    points, and they currently have one randomly chosen prompt and the first
+    rule in the list of rules to follow. *)
 
 val current_points : t -> int
 (** [current_points s] is the amount of points the player has currently

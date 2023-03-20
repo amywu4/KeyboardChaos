@@ -5,12 +5,16 @@ type t = {
   rules : Text_shooting.rule list;
 }
 
+exception NoRules
+
 let init_state a =
   {
     points = 0;
     level = 1;
     prompt = Text_shooting.random_prompt a;
-    rules = [ Text_shooting.random_rule a ];
+    rules =
+      (try [ List.nth (Text_shooting.get_rules a) 0 ]
+       with Failure n -> raise NoRules);
   }
 
 let current_points s = s.points

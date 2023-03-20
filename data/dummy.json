@@ -1,21 +1,11 @@
 {
   "prompts": [
-    "The quick brown fox jumped over the lazy dog",
-    "Test",
-    "Carlyns Danish Amy"
+    "The quick brown fox jumped over the lazy dog"
   ],
   "rules": [
     {
       "name": "quick",
       "description": "Type the prompt as quickly as you can!"
-    },
-    {
-      "name": "replace",
-      "description": "a to e: Replace every letter a with the letter e"
-    },
-    {
-      "name": "double",
-      "description": "Type each letter two times for it to count as the typing of one letter"
     }
   ]
 }

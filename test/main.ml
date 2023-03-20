@@ -47,6 +47,13 @@ let current_rules_test (name : string) (ts : Zenith.Text_shooting.t)
     (s : Zenith.State.t) (expected_output : bool) : test =
   name >:: fun _ -> assert_equal expected_output (current_rules_helper ts s)
 
+let parse_test (name : string) (input : string) (state : State.t)
+    (start_time : float) (end_time : float) (expected_output : int) : test =
+  name >:: fun _ ->
+  assert_equal expected_output
+    (parse input state start_time end_time)
+    ~printer:string_of_int
+
 let text_shooting_tests =
   [
     random_prompt_test "random prompt of dummy is a valid prompt in dummy"
@@ -79,7 +86,26 @@ let state_tests =
       true;
   ]
 
+let command_tests =
+  [
+    parse_test "Exactly five characters are incorrect in the input string"
+      "The wrong brown fox jumped over the lazy dog"
+      (init_state (from_json dummy))
+      0. 10. 359;
+    parse_test "Input String is Empty" ""
+      (init_state (from_json dummy))
+      0. 10. 0;
+    parse_test "Only one character is correct" "T"
+      (init_state (from_json dummy))
+      0. 10. 0;
+    parse_test "Completely Perfect like Danish :)"
+      "The quick brown fox jumped over the lazy dog"
+      (init_state (from_json dummy))
+      0. 0. 1000;
+  ]
+
 let tests =
-  "zenith test suite" >::: List.flatten [ text_shooting_tests; state_tests ]
+  "zenith test suite"
+  >::: List.flatten [ text_shooting_tests; state_tests; command_tests ]
 
 let _ = run_test_tt_main tests
