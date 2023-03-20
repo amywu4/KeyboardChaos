@@ -2,25 +2,27 @@ type t
 
 val init_state : Text_shooting.t -> t
 (** [init_state a] is the initial state of the game when playing text shooting
-    [a]. In that state the player is currently playing level one, and they
-    currently have a set of rules to follow. *)
+    [a]. In that state the player is currently playing level one, they have 0
+    points, and they currently have one randomly chosen prompt and rule to
+    follow. *)
 
 val current_points : t -> int
-(** [current_points a] is the amount of points the player has currently
-    accumulated in the game when playing text shooting game [a].*)
+(** [current_points s] is the amount of points the player has currently
+    accumulated in state [s].*)
 
 val current_level : t -> int
-(** [current_level a] is the level the player is currently playing in the game
-    when playing text shooting game [a].*)
+(** [current_level s] is the level the player is currently playing on in state
+    [s].*)
 
 val current_prompt : t -> Text_shooting.t
-(** [current_prompt a] is the prompt the player currently has to 'shoot' when
-    playing text shooting game [a].*)
+(** [current_prompt s] is the prompt the player currently has to 'shoot' in game
+    state [s].*)
 
 val current_rules : t -> Text_shooting.t
-(** [current_rules a] are the set of rules the player currently has to follow
-    when playing text shooting game [a].*)
+(** [current_rules s] are the set of rules the player currently has to follow in
+    game state [s].*)
 
-val next_level : t -> t
-(** [next_level pt prompt state] are the set of rules the player currently has
-    to follow when playing text shooting game [a].*)
+val next_level : int -> Text_shooting.t -> t -> t
+(** [next_level pts a s] modifies game state [s] by incrementing its points by
+    pts, incrementing the level by 1, replacing the prompt with a new random
+    prompt from game [a], and adding a new unique random rule from [a].*)

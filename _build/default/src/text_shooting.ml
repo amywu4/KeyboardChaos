@@ -37,17 +37,19 @@ let random_prompt ts =
 let rule_name rule = rule.name
 let rule_description rule = rule.description
 
-let get_rules_names ts =
-  ts.rules |> List.map (fun x -> x.name) |> List.sort_uniq compare
+(*let get_rules_names ts = ts.rules |> List.map (fun x -> x.name) |>
+  List.sort_uniq compare
 
-let get_rules_descriptions ts =
-  ts.rules |> List.map (fun x -> x.description) |> List.sort_uniq compare
+  let get_rules_descriptions ts = ts.rules |> List.map (fun x -> x.description)
+  |> List.sort_uniq compare*)
+
+let get_rules ts = ts.rules
 
 let random_rule ts =
   if List.length ts.rules = 0 then raise NoRules
   else
     let random_int = Random.int (List.length ts.rules) in
-    List.nth ts.rules random_int |> rule_name
+    List.nth ts.rules random_int
 
 (* let rule_desc ts = raise (Failure "Unimplemented:
    Text_shooting.rule_desc") *)

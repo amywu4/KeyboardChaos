@@ -5,6 +5,7 @@ type rule = {
   name : string;
   description : string;
 }
+(** The abstract type of values representing a single rule. *)
 
 exception NoPrompts
 exception NoRules
@@ -26,12 +27,15 @@ val rule_name : rule -> string
 val rule_description : rule -> string
 (** [rule_description r] is the description of a rule [r] *)
 
-val get_rules_names : t -> string list
-(** [get_rules_names j] is a list of names of rules that [j] has *)
+(*val get_rules_names : t -> string list (** [get_rules_names j] is a list of
+  names of rules that [j] has *)
 
-val get_rules_descriptions : t -> string list
-(** [get_rules_descriptions r] is the description of rule [r] *)
+  val get_rules_descriptions : t -> string list (** [get_rules_descriptions r]
+  is the description of rule [r] *) *)
 
-val random_rule : t -> string
-(** [random_rule t] is the name of a rule randomly picked from the list of rules
+val get_rules : t -> rule list
+(** [get_rules_names j] is a list of rules that [j] has *)
+
+val random_rule : t -> rule
+(** [random_rule t] is the rule randomly picked from the list of rules
     [t.rules]. Raises [NoRules] if [t] has no rules.*)

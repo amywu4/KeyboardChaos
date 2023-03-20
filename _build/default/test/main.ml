@@ -14,8 +14,8 @@ let random_prompt_test (name : string) (ts : Zenith.Text_shooting.t)
     (rand : string) (expected_output : bool) : test =
   name >:: fun _ -> assert_equal expected_output (random_prompt_helper ts rand)
 
-let random_rule_helper (ts : Zenith.Text_shooting.t) (rand : string) : bool =
-  List.mem rand (get_rules_names ts)
+let random_rule_helper (ts : Zenith.Text_shooting.t) (rand : rule) : bool =
+  List.mem rand (get_rules ts)
 
 let random_rule_test (name : string) (ts : Zenith.Text_shooting.t)
     (rand : string) (expected_output : bool) : test =

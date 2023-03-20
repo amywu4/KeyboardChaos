@@ -1,6 +1,18 @@
-type t = unit
+type t = {
+  points : int;
+  level : int;
+  prompt : string;
+  rules : Text_shooting.rule list;
+}
 
-let init_state = raise (Failure "Unimplemented: State.init_state")
+let init_state a =
+  {
+    points = 0;
+    level = 1;
+    prompt = Text_shooting.random_prompt a;
+    rules = [ Text_shooting.random_rule a ];
+  }
+
 let current_points = raise (Failure "Unimplemented: State.current_points")
 let current_level = raise (Failure "Unimplemented: State.current_level")
 let current_prompt = raise (Failure "Unimplemented: State.current_prompt")
