@@ -8,7 +8,6 @@ type rule = {
 
 exception NoPrompts
 exception NoRules
-exception UnknownRule of string
 
 val from_json : Yojson.Basic.t -> t
 (** [from_json j] is the representation of prompts or rules that [j] represents.
@@ -36,7 +35,3 @@ val get_rules_descriptions : t -> string list
 val random_rule : t -> string
 (** [random_rule t] is the name of a rule randomly picked from the list of rules
     [t.rules]. Raises [NoRules] if [t] has no rules.*)
-
-(* val rule_desc : string -> t -> string (** [rule_desc n] provides the
-   description of the rule with name [n] in [t]. Raises [UnknownRule n] if n is
-   not the name of any rule in [t].*) *)

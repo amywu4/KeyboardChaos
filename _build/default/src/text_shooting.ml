@@ -12,7 +12,6 @@ type t = {
 
 exception NoPrompts
 exception NoRules
-exception UnknownRule of string
 
 let rule json =
   {
@@ -30,8 +29,10 @@ let from_json json =
 let get_prompts ts = ts.prompts
 
 let random_prompt ts =
-  let random_int = Random.int (List.length ts.prompts) in
-  List.nth ts.prompts random_int
+  if List.length ts.prompts = 0 then raise NoPrompts
+  else
+    let random_int = Random.int (List.length ts.prompts) in
+    List.nth ts.prompts random_int
 
 let rule_name rule = rule.name
 let rule_description rule = rule.description
@@ -43,8 +44,10 @@ let get_rules_descriptions ts =
   ts.rules |> List.map (fun x -> x.description) |> List.sort_uniq compare
 
 let random_rule ts =
-  let random_int = Random.int (List.length ts.rules) in
-  List.nth ts.rules random_int |> rule_name
+  if List.length ts.rules = 0 then raise NoRules
+  else
+    let random_int = Random.int (List.length ts.rules) in
+    List.nth ts.rules random_int |> rule_name
 
 (* let rule_desc ts = raise (Failure "Unimplemented:
    Text_shooting.rule_desc") *)

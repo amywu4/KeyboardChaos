@@ -1,9 +1,9 @@
-# dune exec test/main.exe
+# dune build --watch
 # OCAMLPARAM: unset
 # Shared cache: disabled
-# Workspace root: /Users/amywu7162/3110/zenith
-# Auto-detected concurrency: 4
-$ /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/nq/0r8bpxjj3lq12ht5fm9bbdx80000gn/T/dune_518040_output
+# Workspace root: /home/legendfinder/3110/zenith
+# Auto-detected concurrency: 16
+$ /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /tmp/dune_b459bb_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -11,69 +11,70 @@ $ /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/nq/
 #  ; merlin = true
 #  ; for_host = None
 #  ; fdo_target_exe = None
-#  ; build_dir = In_build_dir "default"
+#  ; build_dir = "default"
 #  ; toplevel_path =
-#      Some External "/Users/amywu7162/.opam/cs3110-2023sp/lib/toplevel"
-#  ; ocaml_bin = External "/Users/amywu7162/.opam/cs3110-2023sp/bin"
-#  ; ocaml = Ok External "/Users/amywu7162/.opam/cs3110-2023sp/bin/ocaml"
-#  ; ocamlc = External "/Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlc.opt"
+#      Some External "/home/legendfinder/.opam/cs3110-2023sp/lib/toplevel"
+#  ; ocaml_bin = External "/home/legendfinder/.opam/cs3110-2023sp/bin"
+#  ; ocaml = Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocaml"
+#  ; ocamlc = External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt"
 #  ; ocamlopt =
-#      Ok External "/Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlopt.opt"
+#      Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt"
 #  ; ocamldep =
-#      Ok External "/Users/amywu7162/.opam/cs3110-2023sp/bin/ocamldep.opt"
+#      Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt"
 #  ; ocamlmklib =
-#      Ok External "/Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlmklib.opt"
+#      Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/amywu7162/.opam/cs3110-2023sp/lib"
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/home/legendfinder/.opam/cs3110-2023sp/lib"
 #        ; "DUNE_OCAML_STDLIB" :
-#            "/Users/amywu7162/.opam/cs3110-2023sp/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/Users/amywu7162/3110/zenith"
-#        ; "INSIDE_DUNE" : "/Users/amywu7162/3110/zenith/_build/default"
-#        ; "MANPATH" :
-#            "/Users/amywu7162/3110/zenith/_build/install/default/bin"
+#            "/home/legendfinder/.opam/cs3110-2023sp/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/legendfinder/3110/zenith"
+#        ; "INSIDE_DUNE" : "/home/legendfinder/3110/zenith/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/amywu7162/3110/zenith/_build/install/default/lib"
+#            "/home/legendfinder/3110/zenith/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/amywu7162/3110/zenith/_build/install/default/lib"
+#            "/home/legendfinder/3110/zenith/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/amywu7162/3110/zenith/_build/install/default/lib/toplevel"
+#            "/home/legendfinder/3110/zenith/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_paths = [ External "/Users/amywu7162/.opam/cs3110-2023sp/lib" ]
+#  ; findlib_paths = [ External "/home/legendfinder/.opam/cs3110-2023sp/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.14.0"
 #      ; standard_library_default =
-#          "/Users/amywu7162/.opam/cs3110-2023sp/lib/ocaml"
-#      ; standard_library = "/Users/amywu7162/.opam/cs3110-2023sp/lib/ocaml"
+#          "/home/legendfinder/.opam/cs3110-2023sp/lib/ocaml"
+#      ; standard_library = "/home/legendfinder/.opam/cs3110-2023sp/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
+#      ; c_compiler = "gcc"
 #      ; ocamlc_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; bytecomp_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; native_c_libraries = [ "-lm" ]
@@ -83,8 +84,8 @@ $ /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/nq/
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
+#      ; system = "linux"
+#      ; asm = [ "as" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -95,8 +96,8 @@ $ /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/nq/
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "x86_64-apple-darwin21.2.0"
-#      ; target = "x86_64-apple-darwin21.2.0"
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -116,5 +117,48 @@ $ /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/nq/
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I test/.main.eobjs/byte -I test/.main.eobjs/native -I /Users/amywu7162/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/amywu7162/.opam/cs3110-2023sp/lib/ounit2 -I /Users/amywu7162/.opam/cs3110-2023sp/lib/ounit2/advanced -I /Users/amywu7162/.opam/cs3110-2023sp/lib/seq -I /Users/amywu7162/.opam/cs3110-2023sp/lib/stdlib-shims -I /Users/amywu7162/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -I src/.zenith.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.main.eobjs/native/dune__exe__Main.cmx -c -impl test/main.ml)
-$ (cd _build/default && /Users/amywu7162/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o test/main.exe /Users/amywu7162/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /Users/amywu7162/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /Users/amywu7162/.opam/cs3110-2023sp/lib/ocaml -I /Users/amywu7162/.opam/cs3110-2023sp/lib/ocaml /Users/amywu7162/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /Users/amywu7162/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa /Users/amywu7162/.opam/cs3110-2023sp/lib/stdlib-shims/stdlib_shims.cmxa /Users/amywu7162/.opam/cs3110-2023sp/lib/ounit2/advanced/oUnitAdvanced.cmxa /Users/amywu7162/.opam/cs3110-2023sp/lib/ounit2/oUnit.cmxa test/.main.eobjs/native/dune__exe__Main.cmx)
+# Attempted to add watch to non-existent directory
+# /mnt/c/ProgramData/Anaconda3/Library/usr.
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/text_shooting.ml) > _build/default/src/.zenith.objs/text_shooting.ml.d
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Text_shooting.cmx -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cmxa src/.zenith.objs/native/zenith.cmx src/.zenith.objs/native/zenith__Text_shooting.cmx src/.zenith.objs/native/zenith__State.cmx src/.zenith.objs/native/zenith__Command.cmx src/.zenith.objs/native/zenith__Author.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o bin/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o test/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/stdlib-shims/stdlib_shims.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/advanced/oUnitAdvanced.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/oUnit.cmxa test/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Text_shooting.cmo -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cma src/.zenith.objs/byte/zenith.cmo src/.zenith.objs/byte/zenith__Text_shooting.cmo src/.zenith.objs/byte/zenith__State.cmo src/.zenith.objs/byte/zenith__Command.cmo src/.zenith.objs/byte/zenith__Author.cmo)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -shared -linkall -I src -o src/zenith.cmxs src/zenith.cmxa)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/text_shooting.ml) > _build/default/src/.zenith.objs/text_shooting.ml.d
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Text_shooting.cmx -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cmxa src/.zenith.objs/native/zenith.cmx src/.zenith.objs/native/zenith__Text_shooting.cmx src/.zenith.objs/native/zenith__State.cmx src/.zenith.objs/native/zenith__Command.cmx src/.zenith.objs/native/zenith__Author.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o bin/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o test/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/stdlib-shims/stdlib_shims.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/advanced/oUnitAdvanced.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/oUnit.cmxa test/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Text_shooting.cmo -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cma src/.zenith.objs/byte/zenith.cmo src/.zenith.objs/byte/zenith__Text_shooting.cmo src/.zenith.objs/byte/zenith__State.cmo src/.zenith.objs/byte/zenith__Command.cmo src/.zenith.objs/byte/zenith__Author.cmo)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -shared -linkall -I src -o src/zenith.cmxs src/zenith.cmxa)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -intf src/text_shooting.mli) > _build/default/src/.zenith.objs/text_shooting.mli.d
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Text_shooting.cmi -c -intf src/text_shooting.mli)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__State.cmi -c -intf src/state.mli)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Command.cmi -c -intf src/command.mli)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I bin/.main.eobjs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmi -c -intf bin/main.mli)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -I src/.zenith.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Command.cmx -c -impl src/command.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__State.cmx -c -impl src/state.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Text_shooting.cmx -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cmxa src/.zenith.objs/native/zenith.cmx src/.zenith.objs/native/zenith__Text_shooting.cmx src/.zenith.objs/native/zenith__State.cmx src/.zenith.objs/native/zenith__Command.cmx src/.zenith.objs/native/zenith__Author.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o bin/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I test/.main.eobjs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2 -I /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/advanced -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/stdlib-shims -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -no-alias-deps -opaque -o test/.main.eobjs/byte/dune__exe__Main.cmi -c -intf test/main.mli)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I test/.main.eobjs/byte -I test/.main.eobjs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2 -I /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/advanced -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/stdlib-shims -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -I src/.zenith.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.main.eobjs/native/dune__exe__Main.cmx -c -impl test/main.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o test/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/stdlib-shims/stdlib_shims.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/advanced/oUnitAdvanced.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/oUnit.cmxa test/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Command.cmo -c -impl src/command.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__State.cmo -c -impl src/state.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Text_shooting.cmo -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cma src/.zenith.objs/byte/zenith.cmo src/.zenith.objs/byte/zenith__Text_shooting.cmo src/.zenith.objs/byte/zenith__State.cmo src/.zenith.objs/byte/zenith__Command.cmo src/.zenith.objs/byte/zenith__Author.cmo)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -shared -linkall -I src -o src/zenith.cmxs src/zenith.cmxa)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/text_shooting.ml) > _build/default/src/.zenith.objs/text_shooting.ml.d
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Text_shooting.cmx -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cmxa src/.zenith.objs/native/zenith.cmx src/.zenith.objs/native/zenith__Text_shooting.cmx src/.zenith.objs/native/zenith__State.cmx src/.zenith.objs/native/zenith__Command.cmx src/.zenith.objs/native/zenith__Author.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o bin/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o test/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/stdlib-shims/stdlib_shims.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/advanced/oUnitAdvanced.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ounit2/oUnit.cmxa test/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Text_shooting.cmo -c -impl src/text_shooting.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cma src/.zenith.objs/byte/zenith.cmo src/.zenith.objs/byte/zenith__Text_shooting.cmo src/.zenith.objs/byte/zenith__State.cmo src/.zenith.objs/byte/zenith__Command.cmo src/.zenith.objs/byte/zenith__Author.cmo)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -shared -linkall -I src -o src/zenith.cmxs src/zenith.cmxa)

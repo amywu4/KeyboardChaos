@@ -1,4 +1,4 @@
-(lang dune 3.7)
+(lang dune 3.6)
 (name Zenith)
 (sections (lib .) (libexec .) (doc ../../doc/Zenith))
 (files
@@ -50,34 +50,28 @@
  (modes byte native)
  (modules
   (wrapped
-   (group
-    (alias
-     (obj_name zenith)
+   (main_module_name Zenith)
+   (modules
+    ((name Author)
+     (obj_name zenith__Author)
      (visibility public)
-     (kind alias)
-     (source (path Zenith) (impl (path zenith.ml-gen))))
+     (impl)
+     (intf))
+    ((name Command)
+     (obj_name zenith__Command)
+     (visibility public)
+     (impl)
+     (intf))
+    ((name State) (obj_name zenith__State) (visibility public) (impl) (intf))
+    ((name Text_shooting)
+     (obj_name zenith__Text_shooting)
+     (visibility public)
+     (impl)
+     (intf)))
+   (alias_module
     (name Zenith)
-    (modules
-     (module
-      (obj_name zenith__Author)
-      (visibility public)
-      (source (path Author) (intf (path author.mli)) (impl (path author.ml))))
-     (module
-      (obj_name zenith__Command)
-      (visibility public)
-      (source
-       (path Command)
-       (intf (path command.mli))
-       (impl (path command.ml))))
-     (module
-      (obj_name zenith__State)
-      (visibility public)
-      (source (path State) (intf (path state.mli)) (impl (path state.ml))))
-     (module
-      (obj_name zenith__Text_shooting)
-      (visibility public)
-      (source
-       (path Text_shooting)
-       (intf (path text_shooting.mli))
-       (impl (path text_shooting.ml))))))
+    (obj_name zenith)
+    (visibility public)
+    (kind alias)
+    (impl))
    (wrapped true))))
