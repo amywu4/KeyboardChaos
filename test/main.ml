@@ -67,7 +67,7 @@ let text_shooting_tests =
 let state_tests =
   [
     current_points_test "Points start at 0" (init_state (from_json dummy)) 0;
-    current_level_test "Level starts at 0" (init_state (from_json dummy)) 0;
+    current_level_test "Level starts at 1" (init_state (from_json dummy)) 1;
     current_prompt_test "Starting prompt is from adventure" (from_json dummy)
       (init_state (from_json dummy))
       true;
@@ -79,5 +79,7 @@ let state_tests =
       true;
   ]
 
-let tests = "zenith test suite" >::: List.flatten [ text_shooting_tests ]
+let tests =
+  "zenith test suite" >::: List.flatten [ text_shooting_tests; state_tests ]
+
 let _ = run_test_tt_main tests
