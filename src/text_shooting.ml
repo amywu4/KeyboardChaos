@@ -1,12 +1,14 @@
 open Yojson.Basic.Util
 
+type prompt = string
+
 type rule = {
   name : string;
   description : string;
 }
 
 type t = {
-  prompts : string list;
+  prompts : prompt list;
   rules : rule list;
 }
 
