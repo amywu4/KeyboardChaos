@@ -14,11 +14,11 @@ val current_level : t -> int
 (** [current_level s] is the level the player is currently playing on in state
     [s].*)
 
-val current_prompt : t -> Text_shooting.t
+val current_prompt : t -> Text_shooting.prompt
 (** [current_prompt s] is the prompt the player currently has to 'shoot' in game
     state [s].*)
 
-val current_rules : t -> Text_shooting.t
+val current_rules : t -> Text_shooting.rule list
 (** [current_rules s] are the set of rules the player currently has to follow in
     game state [s].*)
 
