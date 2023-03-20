@@ -47,7 +47,7 @@ let random_rule ts =
   if List.length ts.rules = 0 then raise NoRules
   else
     let random_int = Random.int (List.length ts.rules) in
-    List.nth ts.rules random_int |> rule_name
+    List.nth ts.rules random_int
 
 (* let rule_desc ts = raise (Failure "Unimplemented:
    Text_shooting.rule_desc") *)
