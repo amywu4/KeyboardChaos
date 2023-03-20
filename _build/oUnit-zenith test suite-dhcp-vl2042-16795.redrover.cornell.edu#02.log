@@ -1,3 +1,6 @@
-2023-03-20T06:57:14+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: Start test zenith test suite:1:random prompt of dummy is a valid prompt.
-2023-03-20T06:57:14+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: Test zenith test suite:1:random prompt of dummy is a valid prompt is successful.
-2023-03-20T06:57:14+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: End test zenith test suite:1:random prompt of dummy is a valid prompt.
+2023-03-20T07:34:06+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: Start test zenith test suite:1:'hello' is not a valid prompt in dummy.
+2023-03-20T07:34:06+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: Test zenith test suite:1:'hello' is not a valid prompt in dummy is successful.
+2023-03-20T07:34:06+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: End test zenith test suite:1:'hello' is not a valid prompt in dummy.
+2023-03-20T07:34:06+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: Start test zenith test suite:3:'hello' is not a valid rule in dummy.
+2023-03-20T07:34:06+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: Test zenith test suite:3:'hello' is not a valid rule in dummy is successful.
+2023-03-20T07:34:06+00:00 dhcp-vl2042-16795.redrover.cornell.edu#02 I: End test zenith test suite:3:'hello' is not a valid rule in dummy.
