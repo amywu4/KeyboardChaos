@@ -1,0 +1,4 @@
+(library
+ (name zenith)
+ (public_name Zenith)
+ (libraries yojson ANSITerminal))
