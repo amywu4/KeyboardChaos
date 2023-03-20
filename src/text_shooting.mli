@@ -1,18 +1,22 @@
 type t
 (** The abstract type of values representing prompts and rules. *)
 
-exception NoItems
-
-val prompts : t
-(** [prompts] stores a representation of prompt.json.*)
-
-val rules : t
-(** [rules] stores a representation of prompt.json.*)
+exception NoPrompts
+exception NoRules
+exception UnknownRule of string
 
 val from_json : Yojson.Basic.t -> t
 (** [from_json j] is the representation of prompts or rules that [j] represents.
     Requires: [j] is a valid JSON prompt representation. *)
 
-val random_item : t -> string
-(** [random_item l] is an element randomly picked from the list of prompts/rules
-    [l]. Raises [NoItems] if [l] has no items.*)
+val random_prompt : t -> string
+(** [random_prompt t] is a prompt randomly picked from the list of prompts [t].
+    Raises [NoPrompts] if [t] has no prompts.*)
+
+val random_rule : t -> string
+(** [random_rule t] is the name of a rule randomly picked from the list of rules
+    [t]. Raises [NoRules] if [t] has no rules.*)
+
+val rule_desc : string -> t -> string
+(** [rule_desc n] provides the description of the rule with name [n] in [t].
+    Raises [UnknownRule n] if n is not the name of any rule in [t].*)
