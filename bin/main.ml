@@ -15,11 +15,10 @@ let rec print_rules levels game state =
     ^ string_of_int (current_level state)
     ^ "! You have "
     ^ string_of_int (current_points state)
-    ^ " points. Your rules to follow IN ORDER are:\n");
-  List.iteri
-    (fun i r ->
-      ANSITerminal.print_string [ ANSITerminal.red ]
-        ("\n" ^ string_of_int i ^ ". " ^ rule_description r))
+    ^ " points. Your rules to follow are:\n");
+  List.iter
+    (fun r ->
+      ANSITerminal.print_string [ ANSITerminal.red ] ("\n-" ^ rule_description r))
     (current_rules state);
   print_endline "\n\nPress enter to receive the prompt and start the timer.";
   print_string "> ";

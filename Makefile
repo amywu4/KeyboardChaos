@@ -23,13 +23,13 @@ check:
 finalcheck:
 	@bash check.sh final
 
-# zip:
-# 	rm -f adventure.zip
-# 	zip -r adventure.zip . -x@exclude.lst
+zip:
+	rm -f adventure.zip
+	zip -r zenith.zip . -x@exclude.lst
 
-# clean:
-# 	dune clean
-# 	rm -f adventure.zip
+clean:
+	dune clean
+	rm -f zenith.zip
 
 doc:
 	dune build @doc
