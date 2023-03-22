@@ -24,8 +24,8 @@ finalcheck:
 	@bash check.sh final
 
 zip:
-	rm -f adventure.zip
-	zip -r zenith.zip . -x@exclude.lst
+	rm -f zenith.zip
+	zip -r zenith.zip .
 
 clean:
 	dune clean
