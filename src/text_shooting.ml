@@ -46,6 +46,7 @@ let rule_description rule = rule.description
   |> List.sort_uniq compare*)
 
 let get_rules ts = ts.rules
+let num_rules ts = List.length ts.rules
 
 let random_rule ts =
   if List.length ts.rules = 0 then raise NoRules

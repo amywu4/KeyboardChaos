@@ -22,9 +22,13 @@ let rule json =
   }
 
 let from_json json =
+  print_string "Hi!";
   {
     prompts =
-      json |> member "prompts" |> to_list |> List.map (fun x -> to_string x);
+      json |> member "prompts" |> to_list
+      |> List.map (fun x ->
+             print_string (to_string x);
+             to_string x);
     rules = json |> member "rules" |> to_list |> List.map rule;
   }
 
@@ -46,6 +50,7 @@ let rule_description rule = rule.description
   |> List.sort_uniq compare*)
 
 let get_rules ts = ts.rules
+let num_rules ts = List.length ts.rules
 
 let random_rule ts =
   if List.length ts.rules = 0 then raise NoRules

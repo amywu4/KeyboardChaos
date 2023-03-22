@@ -1,0 +1,82 @@
+There are 4 overall steps to install and play our game. You can find them below.
+Enjoy!
+
+1. Please follow the instructions below to download OCaml to your Laptop (A-D)
+
+A. Unix Development Environment
+Linux
+
+If you’re already running Linux, you’re done with this step. Proceed to Install 
+OPAM, below.
+
+Mac
+
+Beneath the surface, macOS is already a Unix-based OS. But you’re going to need 
+some developer tools and a Unix package manager. There are two to pick from: 
+Homebrew and MacPorts. From the perspective of this textbook and CS 3110, it 
+doesn’t matter which you choose:
+
+If you’re already accustomed to one, feel free to keep using it. Make sure to 
+run its update command before continuing with these instructions.
+Otherwise, pick one and follow the installation instructions on its website. 
+The installation process for Homebrew is typically easier and faster, which 
+might nudge you in that direction. If you do choose MacPorts, make sure to 
+follow all the detailed instructions on its page, including XCode and an X11 
+server. Do not install both Homebrew and MacPorts; they aren’t meant to 
+co-exist. If you change your mind later, make sure to uninstall one before
+ installing the other. After you’ve finished installing/updating either 
+ Homebrew or MacPorts, proceed to Install OPAM, below.
+
+Windows
+
+Unix development in Windows is made possible by the Windows Subsystem for Linux 
+(WSL). If you have a recent version of Windows (build 20262, released 
+November 2020, or newer), WSL is easy to install. If you don’t have that recent 
+of a version, try running Windows Update to get it.
+
+B. Install OPAM
+
+Linux
+
+Follow the instructions for your distribution 
+(https://opam.ocaml.org/doc/Install.html)
+
+Mac
+If you're using Homebrew, run this command:
+brew install opam
+
+If you're using MacPorts, run this command:
+sudo port install opam
+
+Windows
+Run this command from Ubuntu:
+sudo apt install opam
+
+C. Initialize OPAM
+Linux, Mac, and WSL2. Run:
+opam init --bare -a -y
+
+WSL1. Run:
+opam init --bare -a -y --disable-sandboxing
+
+D. Create an OPAM Switch
+
+Create a switch by running this command:
+opam switch create cs3110-2023sp ocaml-base-compiler.4.14.0
+
+Then in the next step write:
+eval $(opam env)
+
+Close your terminal and reopen it. Then run the following:
+opam switch list
+
+Continue by installing the OPAM package we need:
+opam install -y utop odoc ounit2 qcheck bisect_ppx menhir ocaml-lsp-server ocamlformat ocamlformat-rpc
+
+You should now be able to launch utop, the OCaml Universal Toplevel
+
+2. Before launcing utop, navigate to the directory where your file is.
+
+3. Then type the command "make play" in the terminal.
+
+4. From there, follow the in game instructions and enjoy!

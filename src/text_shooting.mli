@@ -39,6 +39,9 @@ val rule_description : rule -> string
 val get_rules : t -> rule list
 (** [get_rules_names j] is a list of rules that [j] has *)
 
+val num_rules : t -> int
+(** [get_num_rules j] is the number of rules that [j] has *)
+
 val random_rule : t -> rule
 (** [random_rule t] is the rule randomly picked from the list of rules
     [t.rules]. Raises [NoRules] if [t] has no rules.*)

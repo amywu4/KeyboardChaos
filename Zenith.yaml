@@ -1,0 +1,28 @@
+---
+# Members of your group.
+group:
+  - name: Danish Qureshi
+    netid: daq8
+  - name: Carlyns Regis
+    netid: cr478
+  - name: Amy Wu
+    netid: aw628
+# Your PM.
+pm:
+  name: Melanie Gao
+  netid: zg66
+# Set to false if you don't want your gallery entry to be public.
+publish: true
+# Pithy title
+title: "Keyboard Chaos"
+# OK if this is a Cornell Github link, but public gallery viewers won't be able to see it.
+git-repo: "https://github.coecis.cornell.edu/daq8/zenith.git"
+# If you have no demo screencast, replace the url string with an empty string ""
+demo-video-url: ""
+# Write a short, attention-grabbing description of your project.
+desc: >
+  Our project is a speed typing game. Given a random prompt, type out the 
+  given prompt following a series of random typing rules. The time begins 
+  the moment the prompt is given and ends when you finish typing so type 
+  fast! The less time you take, the more points you're awarded. Be careful 
+  though, because if you mistype a character, you will be deducted points.
