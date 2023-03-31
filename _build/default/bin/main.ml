@@ -7,7 +7,8 @@ let complete points state =
   ANSITerminal.print_string [ ANSITerminal.red ]
     ("\n\nYou've completed the game! You got a grand total of "
     ^ string_of_int (current_points state + points)
-    ^ " points. Congratulations!")
+    ^ " points. Congratulations!");
+  print_endline ""
 
 let rec print_rules levels game state =
   ANSITerminal.print_string [ ANSITerminal.red ]
@@ -34,11 +35,13 @@ and print_prompt levels game state =
   | exception End_of_file -> ()
   | answer -> (
       let end_time = Unix.gettimeofday () in
-      let points = parse answer state start_time end_time in
+      let result = parse answer state start_time end_time in
+      let points = fst result in
+      let inc = snd result in
       print_endline
         ("\nYou got " ^ string_of_int points ^ " points in "
         ^ string_of_int (Float.to_int (end_time -. start_time))
-        ^ " seconds!");
+        ^ " seconds! You made " ^ string_of_int inc ^ " mistakes.");
       print_endline ("The correct answer was '" ^ encode state ^ "'.");
       print_endline "Press enter to continue.";
       print_string "> ";
