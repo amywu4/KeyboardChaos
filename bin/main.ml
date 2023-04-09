@@ -2,6 +2,7 @@ open Zenith
 open Command
 open State
 open Text_shooting
+open Format
 
 let complete points state =
   ANSITerminal.print_string [ ANSITerminal.red ]
@@ -91,8 +92,216 @@ let data_dir_prefix = "data" ^ Filename.dir_sep
 
 (** [main ()] prompts for the game to play, then starts it. *)
 let main () =
+  (* print_string "\n ___ ___ __________ "; print_string "\n | | / / | _____| ";
+     print_string "\n | |/ / | |___ "; print_string "\n | \\ | ___| ";
+     print_string "\n | |\\ \\ | |_____ "; print_string "\n |__| \\___\\
+     |________|"; *)
   ANSITerminal.print_string [ ANSITerminal.red ]
-    "\n\nWelcome to Keyboard Choas!\n";
+    "\n\
+    \              _____        _____   ________     ____          \
+     _______       _____       ___      ___     ________     ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \              \\    \\      /    /  |    ____|   |    |        |       \
+     |    /       \\    |   \\    /   |   |    ____|    ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \               \\    \\    /    /   |   |__      |    |        |    \
+     ___|   |         |   |    \\  /    |   |   |__       ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                \\    \\/\\/    /    |    __|     |    |____    |   \
+     |___    |    |    |   |     \\/     |   |    __|      ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                 \\          /     |   |____    |         |   |       |   \
+     |         |   |    |\\/|    |   |   |____     ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                  \\___/\\___/      |________|   |_________|   \
+     |_______|    \\_______/    |____|  |____|   |________|    ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                                 _____________       \
+     _____            ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                                |             |    \
+     /       \\          ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                                |____     ____|   \
+     |         |         ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                                     |   |        |    \
+     |    |         ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                                     |   |        \
+     |         |         ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                                     |___|         \
+     \\_______/          ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                              ___   ___     ________    \
+     ___    ___ ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                              |  | /  /    |    ____|   \
+     \\  \\  /  / ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                              |  |/  /     |   |__       \
+     \\  \\/  / ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                              |      \\     |    \
+     __|       \\    /   ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                              |  |\\   \\    |   \
+     |____       |  |    ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                              |__| \\___\\   \
+     |________|      |__|    ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                   ______        _____          \
+     ___         _____       _____ ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                  |       \\    /       \\       /   \
+     \\       |      \\    |     \\ ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                  |   |   |   |         |     /  |  \
+     \\      |   |   |   |      \\ ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                  |      \\    |    |    |    /   _   \
+     \\     |      /    |   |   |  ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                  |   |   |   |         |   /   / \\   \
+     \\    |  |\\  \\    |      /  ";
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "\n\
+    \                                  |_______/    \\_______/   /___/   \
+     \\___\\   |__| \\__\\   |_____/  ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                    _______     ___    ___        \
+     ___          _____      _____     ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                   |       |   |   |  |   |      /   \
+     \\       /       \\   /     \\   ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                   |    ___|   |   |__|   |     /  |  \
+     \\     |         |  \\  /  /   ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                   |   |___    |    __    |    /   _   \
+     \\    |    |    |   \\   \\   ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                   |       |   |   |  |   |   /   / \\   \
+     \\   |         |  /  \\  \\  ";
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\
+    \                                   |_______|   |___|  |___|  /___/   \
+     \\___\\   \\_______/   \\_____/   ";
+  print_newline ();
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   \
+     _________________________________________________________________________________________________________________________________";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |            |        |        |        |        |        |        \
+     |        |        |        |        |        |        |        |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |____________|________|_____ __|__ _____|_____ __|_____ __|____ \
+     ___|________|________|________|________|________|________|________|       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |        |        |        |        |        |        |        \
+     |        |        |        |        |        |        |            \
+     |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |        |        |        |        |        |        |        \
+     |        |        |        |        |        |        |            \
+     |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   \
+     |________|________|________|________|________|________|________|________|________|________|________|________|________|____________|       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |            |        |        |        |        |        |        \
+     |        |        |        |        |        |        |        |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |            |        |        |        |        |        |        \
+     |        |        |        |        |        |        |        |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   \
+     |____________|________|________|________|________|________|________|________|________|________|________|________|________|________|       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |               |        |        |        |        |        |        \
+     |        |        |        |        |        |              |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |               |        |        |        |        |        |        \
+     |        |        |        |        |        |              |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   \
+     |_______________|________|________|________|________|________|________|________|________|________|________|________|______________|       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |                   |        |        |        |        |        \
+     |        |        |        |        |        |                   |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |                   |        |        |        |        |        \
+     |        |        |        |        |        |                   |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   \
+     |___________________|________|________|________|________|________|________|________|________|________|________|___________________|       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |        |        |        |          \
+     |                                            |          |        |        \
+     |        |        |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   |        |        |        |          \
+     |                                            |          |        |        \
+     |        |        |       ";
+  print_newline ();
+  ANSITerminal.print_string [ ANSITerminal.black ]
+    "   \
+     |________|________|________|__________|____________________________________________|__________|________|________|________|________|       ";
+  print_newline ();
+
+  ANSITerminal.print_string [ ANSITerminal.red ]
+    "\n\nWelcome to Keyboard Chaos!\n";
+  print_newline ();
   print_endline "Would you like to start the game? [y/n]\n";
   print_string "> ";
   match read_line () with
