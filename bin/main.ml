@@ -223,7 +223,7 @@ let main () =
   print_newline ();
   print_newline ();
   ANSITerminal.print_string [ ANSITerminal.black ]
-    "   \
+    "    \
      _________________________________________________________________________________________________________________________________";
   print_newline ();
   ANSITerminal.print_string [ ANSITerminal.black ]
