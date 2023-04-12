@@ -27,5 +27,5 @@ let next_level pts a s =
     points = s.points + pts;
     level = s.level + 1;
     prompt = Text_shooting.random_prompt a;
-    rules = s.rules;
+    rules = Text_shooting.random_rule a :: s.rules;
   }

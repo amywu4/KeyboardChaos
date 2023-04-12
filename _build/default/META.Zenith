@@ -1,0 +1,6 @@
+description = ""
+requires = "ANSITerminal yojson"
+archive(byte) = "zenith.cma"
+archive(native) = "zenith.cmxa"
+plugin(byte) = "zenith.cma"
+plugin(native) = "zenith.cmxs"

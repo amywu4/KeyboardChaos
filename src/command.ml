@@ -2,7 +2,16 @@ let base_points = 1000.
 let max_incorrect = 20.
 let base_seconds = 60.
 let additional_seconds = 30.
-let do_quick str = str
+let str_to_chars s = List.init (String.length s) (String.get s)
+let chars_to_str cs = String.concat "" (List.map (String.make 1) cs)
+let do_quick s = s
+
+let do_no_spaces s =
+  let chars = str_to_chars s in
+  let no_spaces = List.filter (fun c -> c <> ' ') chars in
+  chars_to_str no_spaces
+
+let do_uppercase s = String.uppercase_ascii s
 (*let do_replace_a_e = raise (Failure "Unimplemented: Command.do_replace_a_e")
   let do_double = raise (Failure "Unimplemented: Command.do_double")*)
 
@@ -49,6 +58,8 @@ let encode s =
     (fun (r : Text_shooting.rule) acc ->
       match r.name with
       | "quick" -> do_quick acc
+      | "no spaces" -> do_no_spaces acc
+      | "uppercase" -> do_uppercase acc
       | _ -> acc)
     (State.current_rules s) (State.current_prompt s)
 
@@ -59,7 +70,10 @@ let encode s =
 
 let calc_points_2 time total inc state =
   let num = float_of_int total -. float_of_int inc in
-  if num < 0. then 0 else Float.to_int (num /. (time /. 60.))
+  if num < 0. then 0
+  else
+    Float.to_int
+      (num /. (time *. (0.9 ** float_of_int (State.current_level state)) /. 60.))
 
 let parse input state start_time end_time =
   let time_diff = end_time -. start_time in

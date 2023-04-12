@@ -2,7 +2,6 @@ open Zenith
 open Command
 open State
 open Text_shooting
-open Format
 
 let complete points state =
   ANSITerminal.print_string [ ANSITerminal.red ]

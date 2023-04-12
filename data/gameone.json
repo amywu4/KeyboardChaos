@@ -1,0 +1,22 @@
+{
+  "prompts": [
+    "This is one prompt you might get",
+    "This is another prompt you can get",
+    "This is a third prompt, wow cool!",
+    "How is there a fourth prompt? Woah."
+  ],
+  "rules": [
+    {
+      "name": "quick",
+      "description": "Type the prompt as quickly as you can!"
+    },
+    {
+      "name": "no spaces",
+      "description": "Remove all spaces from the prompt!"
+    },
+    {
+      "name": "uppercase",
+      "description": "WRITE EVERYTHING IN ALL CAPS!"
+    }
+  ]
+}
