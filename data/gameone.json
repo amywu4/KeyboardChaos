@@ -17,6 +17,10 @@
     {
       "name": "uppercase",
       "description": "WRITE EVERYTHING IN ALL CAPS!"
+    },
+    {
+      "name": "replace a's with e's",
+      "description": "Replace every instance of an a with an e ;)"
     }
   ]
 }

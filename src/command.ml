@@ -12,8 +12,18 @@ let do_no_spaces s =
   chars_to_str no_spaces
 
 let do_uppercase s = String.uppercase_ascii s
-(*let do_replace_a_e = raise (Failure "Unimplemented: Command.do_replace_a_e")
-  let do_double = raise (Failure "Unimplemented: Command.do_double")*)
+let switch_a_e c = if c = 'a' then 'e' else c
+
+let do_replace_a_e s =
+  let chars = str_to_chars s in
+  let replace_a_e = List.map (fun c -> switch_a_e c) chars in
+  chars_to_str replace_a_e
+
+let rec do_double s =
+  let lst = str_to_chars s in
+  match lst with
+  | [] -> []
+  | hd :: tl -> hd :: hd :: do_double (chars_to_str tl)
 
 (* let rec helper lst1 lst2 acc = match lst1 with | [] -> acc | [ h1 ] -> (
    match lst2 with | [] -> acc | [ h2 ] -> if h1 == h2 then acc else acc + 1 |
@@ -60,6 +70,7 @@ let encode s =
       | "quick" -> do_quick acc
       | "no spaces" -> do_no_spaces acc
       | "uppercase" -> do_uppercase acc
+      | "replace a's with e's" -> do_replace_a_e acc
       | _ -> acc)
     (State.current_rules s) (State.current_prompt s)
 
