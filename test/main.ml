@@ -6,6 +6,9 @@ open State
 
 let data_dir_prefix = "data" ^ Filename.dir_sep
 let dummy = Yojson.Basic.from_file (data_dir_prefix ^ "dummy.json")
+let dummy_a = from_json dummy
+let gameone = Yojson.Basic.from_file (data_dir_prefix ^ "gameone.json")
+let gameone_a = from_json gameone
 
 let random_prompt_helper (ts : Zenith.Text_shooting.t) (rand : string) : bool =
   List.mem rand (get_prompts ts)
@@ -58,54 +61,54 @@ let parse_test (name : string) (input : string) (state : State.t)
 let text_shooting_tests =
   [
     random_prompt_test "random prompt of dummy is a valid prompt in dummy"
-      (from_json dummy)
-      (random_prompt (from_json dummy))
+      dummy_a
+      (random_prompt (get_prompts dummy_a))
       true;
-    random_prompt_test "'hello' is not a valid prompt in dummy"
-      (from_json dummy) "hello" false;
-    random_rule_test "random rule of dummy is a valid rule in dummy"
-      (from_json dummy)
-      (random_rule (from_json dummy))
+    random_prompt_test "'hello' is not a valid prompt in dummy" dummy_a "hello"
+      false;
+    random_rule_test "random rule of dummy is a valid rule in dummy" dummy_a
+      (random_rule (get_rules dummy_a))
       true;
-    random_rule_test "'hello' is not a valid rule in dummy" (from_json dummy)
+    random_rule_test "'hello' is not a valid rule in dummy" dummy_a
       { name = "hello"; description = "placeholder" }
       false;
   ]
 
 let state_tests =
   [
-    current_points_test "Points start at 0" (init_state (from_json dummy)) 0;
-    current_level_test "Level starts at 1" (init_state (from_json dummy)) 1;
-    current_prompt_test "Starting prompt is from adventure" (from_json dummy)
-      (init_state (from_json dummy))
-      true;
-    current_rules_length_test "Starting rule list is 1"
-      (init_state (from_json dummy))
-      1;
-    current_rules_test "Starting rule is from adventure" (from_json dummy)
-      (init_state (from_json dummy))
-      true;
+    current_points_test "Points start at 0" (init_state dummy_a) 0;
+    current_level_test "Level starts at 1" (init_state dummy_a) 1;
+    current_prompt_test "Starting prompt is from adventure" dummy_a
+      (init_state dummy_a) true;
+    current_rules_length_test "Starting rule list is 1" (init_state dummy_a) 1;
+    current_rules_test "Starting rule is from adventure" dummy_a
+      (init_state dummy_a) true;
+    current_points_test "Points are added"
+      (init_state dummy_a |> next_level 100 dummy_a |> next_level 35 dummy_a)
+      135;
+    current_level_test "Levels are incremented"
+      (init_state dummy_a |> next_level 100 dummy_a |> next_level 35 dummy_a)
+      3;
+    current_rules_length_test "# of rules at level 3 is 3"
+      (init_state gameone_a |> next_level 100 gameone_a
+     |> next_level 35 gameone_a)
+      3;
   ]
 
 let command_tests =
   [
     parse_test "Exactly five characters are incorrect in the input string"
-      "The wrong brown fox jumped over the lazy dog"
-      (init_state (from_json dummy))
-      0. 10. (234, 5);
+      "The wrong brown fox jumped over the lazy dog" (init_state dummy_a) 0. 10.
+      (234, 5);
     parse_test
       "Exactly five characters are incorrect in the input string: harder"
-      "The quic brodn fox jumpred over thlazy dog"
-      (init_state (from_json dummy))
-      0. 10. (234, 5);
-    parse_test "Input String is Empty" ""
-      (init_state (from_json dummy))
-      0. 10. (0, 44);
-    parse_test "Only one character is correct" "T"
-      (init_state (from_json dummy))
-      0. 10. (0, 43)
+      "The quic brodn fox jumpred over thlazy dog" (init_state dummy_a) 0. 10.
+      (234, 5);
+    parse_test "Input String is Empty" "" (init_state dummy_a) 0. 10. (0, 44);
+    parse_test "Only one character is correct" "T" (init_state dummy_a) 0. 10.
+      (0, 43)
     (* parse_test "Completely Perfect like Danish :)" "The quick brown fox
-       jumped over the lazy dog" (init_state (from_json dummy)) 0. 0. 1000; *);
+       jumped over the lazy dog" (init_state (dummy_a)) 0. 0. 1000; *);
   ]
 
 let tests =

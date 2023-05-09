@@ -24,6 +24,10 @@ val current_rules : t -> Text_shooting.rule list
 (** [current_rules s] are the set of rules the player currently has to follow in
     game state [s].*)
 
+val rule_exists : Text_shooting.rule -> t -> bool
+(** [find_rule r s] Returns [true] if r exists in game state [s]'s set of rules,
+    and [false] otherwise.*)
+
 val next_level : int -> Text_shooting.t -> t -> t
 (** [next_level pts a s] modifies game state [s] by incrementing its points by
     pts, incrementing the level by 1, replacing the prompt with a new random

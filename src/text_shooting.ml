@@ -30,11 +30,11 @@ let from_json json =
 
 let get_prompts ts = ts.prompts
 
-let random_prompt ts =
-  if List.length ts.prompts = 0 then raise NoPrompts
+let random_prompt prompts =
+  if List.length prompts = 0 then raise NoPrompts
   else
-    let random_int = Random.int (List.length ts.prompts) in
-    List.nth ts.prompts random_int
+    let random_int = Random.int (List.length prompts) in
+    List.nth prompts random_int
 
 let rule_name rule = rule.name
 let rule_description rule = rule.description
@@ -48,11 +48,15 @@ let rule_description rule = rule.description
 let get_rules ts = ts.rules
 let num_rules ts = List.length ts.rules
 
-let random_rule ts =
-  if List.length ts.rules = 0 then raise NoRules
+let rec random_rule rules =
+  (*let list_diff = List.filter (fun x -> not (List.mem x (State.current_rules
+    s))) ts.rules if List.length ts.rules = List.length (State.current_rules s)
+    then raise NoRules else let random_int = Random.int (List.length ts.rules)
+    in let rule = List.nth ts.rules random_int in if false then random_rule*)
+  if List.length rules = 0 then raise NoRules
   else
-    let random_int = Random.int (List.length ts.rules) in
-    List.nth ts.rules random_int
+    let random_int = Random.int (List.length rules) in
+    List.nth rules random_int
 
 (* let rule_desc ts = raise (Failure "Unimplemented:
    Text_shooting.rule_desc") *)

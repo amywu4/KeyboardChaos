@@ -1,4 +1,3 @@
-type t
 (** The abstract type of values representing prompts and rules. *)
 
 type rule = {
@@ -10,6 +9,11 @@ type rule = {
 type prompt = string
 (** The type of values representing a single prompt. *)
 
+type t = {
+  prompts : prompt list;
+  rules : rule list;
+}
+
 exception NoPrompts
 exception NoRules
 
@@ -20,7 +24,7 @@ val from_json : Yojson.Basic.t -> t
 val get_prompts : t -> prompt list
 (** [get_prompts j] is a list of prompts in [t] *)
 
-val random_prompt : t -> prompt
+val random_prompt : prompt list -> prompt
 (** [random_prompt t] is a prompt randomly picked from the list of prompts
     [t.prompts]. Raises [NoPrompts] if [t] has no prompts.*)
 
@@ -42,6 +46,6 @@ val get_rules : t -> rule list
 val num_rules : t -> int
 (** [get_num_rules j] is the number of rules that [j] has *)
 
-val random_rule : t -> rule
+val random_rule : rule list -> rule
 (** [random_rule t] is the rule randomly picked from the list of rules
     [t.rules]. Raises [NoRules] if [t] has no rules.*)
