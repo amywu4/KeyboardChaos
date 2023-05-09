@@ -77,6 +77,7 @@ let rec set_levels game state =
           else print_rules levels game state)
 
 let play f =
+  Random.init (int_of_float (Unix.gettimeofday ()));
   try
     let game = from_json (Yojson.Basic.from_file f) in
     match init_state game with
