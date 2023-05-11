@@ -1,0 +1,83 @@
+(lang dune 3.7)
+(name Zenith)
+(sections (lib .) (libexec .) (doc ../../doc/Zenith))
+(files
+ (lib
+  (META
+   author.ml
+   author.mli
+   command.ml
+   command.mli
+   dune-package
+   opam
+   state.ml
+   state.mli
+   text_shooting.ml
+   text_shooting.mli
+   zenith.a
+   zenith.cma
+   zenith.cmi
+   zenith.cmt
+   zenith.cmx
+   zenith.cmxa
+   zenith.ml
+   zenith__Author.cmi
+   zenith__Author.cmt
+   zenith__Author.cmti
+   zenith__Author.cmx
+   zenith__Command.cmi
+   zenith__Command.cmt
+   zenith__Command.cmti
+   zenith__Command.cmx
+   zenith__State.cmi
+   zenith__State.cmt
+   zenith__State.cmti
+   zenith__State.cmx
+   zenith__Text_shooting.cmi
+   zenith__Text_shooting.cmt
+   zenith__Text_shooting.cmti
+   zenith__Text_shooting.cmx))
+ (libexec (zenith.cmxs))
+ (doc (README.md)))
+(library
+ (name Zenith)
+ (kind normal)
+ (archives (byte zenith.cma) (native zenith.cmxa))
+ (plugins (byte zenith.cma) (native zenith.cmxs))
+ (native_archives zenith.a)
+ (requires yojson ANSITerminal)
+ (main_module_name Zenith)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name zenith)
+     (visibility public)
+     (kind alias)
+     (source (path Zenith) (impl (path zenith.ml-gen))))
+    (name Zenith)
+    (modules
+     (module
+      (obj_name zenith__Author)
+      (visibility public)
+      (source (path Author) (intf (path author.mli)) (impl (path author.ml))))
+     (module
+      (obj_name zenith__Command)
+      (visibility public)
+      (source
+       (path Command)
+       (intf (path command.mli))
+       (impl (path command.ml))))
+     (module
+      (obj_name zenith__State)
+      (visibility public)
+      (source (path State) (intf (path state.mli)) (impl (path state.ml))))
+     (module
+      (obj_name zenith__Text_shooting)
+      (visibility public)
+      (source
+       (path Text_shooting)
+       (intf (path text_shooting.mli))
+       (impl (path text_shooting.ml))))))
+   (wrapped true))))
