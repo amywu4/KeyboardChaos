@@ -1,9 +1,9 @@
 # dune exec bin/main.exe
 # OCAMLPARAM: unset
 # Shared cache: disabled
-# Workspace root: /Users/cregis/cs3110/zenith
-# Auto-detected concurrency: 8
-$ /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/9j/y0zpwjdj61vd_m80qsp4mvmh0000gn/T/dune_4c564f_output
+# Workspace root: /home/legendfinder/3110/zenith
+# Auto-detected concurrency: 16
+$ /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /tmp/dune_2b44f3_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -13,75 +13,79 @@ $ /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/9j/y0z
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
 #  ; toplevel_path =
-#      Some External "/Users/cregis/.opam/cs3110-2023sp/lib/toplevel"
-#  ; ocaml_bin = External "/Users/cregis/.opam/cs3110-2023sp/bin"
-#  ; ocaml = Ok External "/Users/cregis/.opam/cs3110-2023sp/bin/ocaml"
-#  ; ocamlc = External "/Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt"
+#      Some External "/home/legendfinder/.opam/cs3110-2023sp/lib/toplevel"
+#  ; ocaml_bin = External "/home/legendfinder/.opam/cs3110-2023sp/bin"
+#  ; ocaml = Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocaml"
+#  ; ocamlc = External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt"
 #  ; ocamlopt =
-#      Ok External "/Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt"
+#      Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt"
 #  ; ocamldep =
-#      Ok External "/Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt"
+#      Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt"
 #  ; ocamlmklib =
-#      Ok External "/Users/cregis/.opam/cs3110-2023sp/bin/ocamlmklib.opt"
+#      Ok External "/home/legendfinder/.opam/cs3110-2023sp/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/cregis/.opam/cs3110-2023sp/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/Users/cregis/.opam/cs3110-2023sp/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/Users/cregis/cs3110/zenith"
-#        ; "INSIDE_DUNE" : "/Users/cregis/cs3110/zenith/_build/default"
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/home/legendfinder/.opam/cs3110-2023sp/lib"
+#        ; "DUNE_OCAML_STDLIB" :
+#            "/home/legendfinder/.opam/cs3110-2023sp/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/legendfinder/3110/zenith"
+#        ; "INSIDE_DUNE" : "/home/legendfinder/3110/zenith/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/cregis/cs3110/zenith/_build/install/default/lib"
+#            "/home/legendfinder/3110/zenith/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/cregis/cs3110/zenith/_build/install/default/lib"
+#            "/home/legendfinder/3110/zenith/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/cregis/cs3110/zenith/_build/install/default/lib/toplevel"
+#            "/home/legendfinder/3110/zenith/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_paths = [ External "/Users/cregis/.opam/cs3110-2023sp/lib" ]
+#  ; findlib_paths = [ External "/home/legendfinder/.opam/cs3110-2023sp/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.14.0"
 #      ; standard_library_default =
-#          "/Users/cregis/.opam/cs3110-2023sp/lib/ocaml"
-#      ; standard_library = "/Users/cregis/.opam/cs3110-2023sp/lib/ocaml"
+#          "/home/legendfinder/.opam/cs3110-2023sp/lib/ocaml"
+#      ; standard_library = "/home/legendfinder/.opam/cs3110-2023sp/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
+#      ; c_compiler = "gcc"
 #      ; ocamlc_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; bytecomp_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; native_c_libraries = [ "-lm" ]
 #      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
 #      ; cc_profile = []
-#      ; architecture = "arm64"
+#      ; architecture = "amd64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
+#      ; system = "linux"
+#      ; asm = [ "as" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -92,8 +96,8 @@ $ /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/9j/y0z
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "aarch64-apple-darwin21.6.0"
-#      ; target = "aarch64-apple-darwin21.6.0"
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -113,25 +117,3 @@ $ /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /var/folders/9j/y0z
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I src/.zenith.objs/byte -no-alias-deps -opaque -o src/.zenith.objs/byte/zenith.cmo -c -impl src/zenith.ml-gen)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/text_shooting.ml) > _build/default/src/.zenith.objs/text_shooting.ml.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -intf src/author.mli) > _build/default/src/.zenith.objs/author.mli.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -intf src/state.mli) > _build/default/src/.zenith.objs/state.mli.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -intf src/command.mli) > _build/default/src/.zenith.objs/command.mli.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -intf src/text_shooting.mli) > _build/default/src/.zenith.objs/text_shooting.mli.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/author.ml) > _build/default/src/.zenith.objs/author.ml.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/command.ml) > _build/default/src/.zenith.objs/command.ml.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/state.ml) > _build/default/src/.zenith.objs/state.ml.d
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Author.cmi -c -intf src/author.mli)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Text_shooting.cmi -c -intf src/text_shooting.mli)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__State.cmi -c -intf src/state.mli)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.zenith.objs/byte -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/byte/zenith__Command.cmi -c -intf src/command.mli)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I bin/.main.eobjs/byte -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmi -c -intf bin/main.mli)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o src/.zenith.objs/native/zenith.cmx -c -impl src/zenith.ml-gen)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Author.cmx -c -impl src/author.ml)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__State.cmx -c -impl src/state.ml)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Text_shooting.cmx -c -impl src/text_shooting.ml)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Command.cmx -c -impl src/command.ml)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal -I /Users/cregis/.opam/cs3110-2023sp/lib/seq -I /Users/cregis/.opam/cs3110-2023sp/lib/yojson -I src/.zenith.objs/byte -I src/.zenith.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cmxa src/.zenith.objs/native/zenith.cmx src/.zenith.objs/native/zenith__Text_shooting.cmx src/.zenith.objs/native/zenith__State.cmx src/.zenith.objs/native/zenith__Command.cmx src/.zenith.objs/native/zenith__Author.cmx)
-$ (cd _build/default && /Users/cregis/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o bin/main.exe /Users/cregis/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /Users/cregis/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /Users/cregis/.opam/cs3110-2023sp/lib/ocaml -I /Users/cregis/.opam/cs3110-2023sp/lib/ocaml /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /Users/cregis/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)

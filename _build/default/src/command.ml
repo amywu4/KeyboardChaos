@@ -37,13 +37,16 @@ let do_replace_s_z s =
   let replace_s_z = List.map (fun c -> switch_s_z c) chars in
   chars_to_str replace_s_z
 
-let rec do_double s =
+let do_double s =
   let lst = str_to_chars s in
-  match lst with
-  | [] -> []
-  | hd :: tl -> hd :: hd :: do_double (chars_to_str tl)
+  let rec do_double_helper lst =
+    match lst with
+    | [] -> []
+    | hd :: tl -> hd :: hd :: do_double_helper tl
+  in
+  chars_to_str (do_double_helper lst)
 
-let reverse_string str =
+let do_reverse str =
   let len = String.length str in
   let rec reverse_helper index acc =
     if index < 0 then acc
@@ -94,10 +97,63 @@ let remove_first_letter str =
 
 let remove_last_letter (s : string) : string =
   let words = String.split_on_char ' ' s in
-  let removedWords =
+  let removed_words =
     List.map (fun word -> String.sub word 0 (String.length word - 1)) words
   in
-  String.concat " " removedWords
+  String.concat " " removed_words
+
+let word_add =
+  [
+    ("one", "two");
+    ("two", "three");
+    ("three", "four");
+    ("four", "five");
+    ("six", "twelve");
+    ("eight", "sixteen");
+  ]
+
+let word_mult =
+  [
+    ("one", "two");
+    ("two", "four");
+    ("three", "six");
+    ("four", "eight");
+    ("five", "ten");
+  ]
+
+let do_add_one (s : string) : string =
+  let words = String.split_on_char ' ' s in
+  let do_add_one_helper w =
+    if String.length w = 1 then
+      try string_of_int (int_of_string w + 1) with Failure _ -> w
+    else snd (List.find (fun v -> fst v = w) word_add)
+  in
+  let new_words = List.map do_add_one_helper words in
+  String.concat " " new_words
+
+let do_mult_two (s : string) : string =
+  let words = String.split_on_char ' ' s in
+  let do_mult_two_helper w =
+    if String.length w = 1 then
+      try string_of_int (int_of_string w * 2) with Failure _ -> w
+    else snd (List.find (fun v -> fst v = w) word_mult)
+  in
+  let new_words = List.map do_mult_two_helper words in
+  String.concat " " new_words
+
+let switch_plus_mult c = if c = '+' then '*' else c
+
+let do_replace_plus_mult s =
+  let chars = str_to_chars s in
+  let replace_plus_mult = List.map (fun c -> switch_plus_mult c) chars in
+  chars_to_str replace_plus_mult
+
+let switch_minus_div w = if w = "-" then "/" else w
+
+let do_replace_minus_div s =
+  let words = String.split_on_char ' ' s in
+  let replace_minus_div = List.map (fun w -> switch_minus_div w) words in
+  String.concat " " replace_minus_div
 
 let lev_mat lst1 lst2 =
   let length1 = List.length lst1 in
@@ -140,11 +196,15 @@ let encode s =
       | "replace a's with e's" -> do_replace_a_e acc
       | "replace i's with o's" -> do_replace_i_o acc
       | "replace s's with z's" -> do_replace_s_z acc
-      | "double" -> string_of_chars (do_double acc)
-      | "reverse" -> reverse_string acc
+      | "double" -> do_double acc
+      | "reverse" -> do_reverse acc
       | "remove punctuation" -> remove_punctuation acc
       | "remove first letter" -> remove_first_letter acc
       | "remove last letter" -> remove_last_letter acc
+      | "add one" -> do_add_one acc
+      | "mult by two" -> do_mult_two acc
+      | "plus to multiply" -> do_replace_plus_mult acc
+      | "minus to divide" -> do_replace_minus_div acc
       | _ -> acc)
     (State.current_rules s) (State.current_prompt s)
 

@@ -424,10 +424,13 @@ let rec print_rules levels game state =
     ^ string_of_int (current_level state)
     ^ "! You have "
     ^ string_of_int (current_points state)
-    ^ " points. Your rules to follow are:\n");
-  List.iter
-    (fun r ->
-      ANSITerminal.print_string [ ANSITerminal.red ] ("\n-" ^ rule_description r))
+    ^ " points. Your rules to follow (in order) are:\n");
+  List.iteri
+    (fun i r ->
+      ANSITerminal.print_string [ ANSITerminal.red ]
+        ("\n"
+        ^ string_of_int (current_level state - i)
+        ^ ". " ^ rule_description r))
     (current_rules state);
   print_endline "\n\nPress enter to receive the prompt and start the timer.";
   print_string "> ";
@@ -460,10 +463,10 @@ and print_prompt levels game state =
           else print_rules levels game (next_level points game state))
 
 let rec set_levels game state =
+  let cap = min 10 (num_rules game) in
   print_endline
     ("\nHow many levels would you like to play? You can have a maximum of "
-    ^ string_of_int (num_rules game)
-    ^ " levels.");
+   ^ string_of_int cap ^ " levels.");
   print_string "> ";
   match read_line () with
   | exception End_of_file -> ()
@@ -473,7 +476,7 @@ let rec set_levels game state =
           print_endline "\nNot a valid integer. Try again!";
           set_levels game state
       | levels ->
-          if levels > num_rules game then (
+          if levels > cap then (
             print_endline "\nLevel count set too high. Try again!";
             set_levels game state)
           else if levels < 1 then (

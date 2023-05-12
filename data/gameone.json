@@ -45,7 +45,7 @@
     },
     {
       "name": "remove punctuation",
-      "description": "Remove All Punctuations Marks From the Prompt!"
+      "description": "Remove All Punctuation Marks From the Prompt!"
     },
     {
       "name": "remove first letter",

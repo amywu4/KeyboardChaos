@@ -1,0 +1,29 @@
+{
+  "prompts": [
+    "1 + two = 3 * 5 - 4 / 1 * three / one",
+    "one 2 3 four / 5 5 -2 * 1 * two + 1",
+    "four - three + two - one = 4 * 2 / 4"
+  ],
+  "rules": [
+    {
+      "name": "quick",
+      "description": "Type the prompt as quickly as you can!"
+    },
+    {
+      "name": "add one",
+      "description": "Increment Every Number and Word!"
+    },
+    {
+      "name": "mult by two",
+      "description": "Multiply Every Number and Word by Two!"
+    },
+    {
+      "name": "plus to multiply",
+      "description": "Replace every plus sign (+) with a multiplication sign (*)!"
+    },
+    {
+      "name": "minus to divide",
+      "description": "Replace every SUBTRACTION SIGN (-) with a division sign (/)!"
+    }
+  ]
+}
