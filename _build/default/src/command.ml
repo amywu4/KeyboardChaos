@@ -12,12 +12,30 @@ let do_no_spaces s =
   chars_to_str no_spaces
 
 let do_uppercase s = String.uppercase_ascii s
-let switch_a_e c = if c = 'a' then 'e' else c
+
+let switch_a_e c =
+  if Char.lowercase_ascii c = 'a' then Char.chr (Char.code c + 4) else c
 
 let do_replace_a_e s =
   let chars = str_to_chars s in
   let replace_a_e = List.map (fun c -> switch_a_e c) chars in
   chars_to_str replace_a_e
+
+let switch_i_o c =
+  if Char.lowercase_ascii c = 'i' then Char.chr (Char.code c + 6) else c
+
+let do_replace_i_o s =
+  let chars = str_to_chars s in
+  let replace_i_o = List.map (fun c -> switch_i_o c) chars in
+  chars_to_str replace_i_o
+
+let switch_s_z c =
+  if Char.lowercase_ascii c = 's' then Char.chr (Char.code c + 7) else c
+
+let do_replace_s_z s =
+  let chars = str_to_chars s in
+  let replace_s_z = List.map (fun c -> switch_s_z c) chars in
+  chars_to_str replace_s_z
 
 let rec do_double s =
   let lst = str_to_chars s in
@@ -25,17 +43,61 @@ let rec do_double s =
   | [] -> []
   | hd :: tl -> hd :: hd :: do_double (chars_to_str tl)
 
-(* let rec helper lst1 lst2 acc = match lst1 with | [] -> acc | [ h1 ] -> (
-   match lst2 with | [] -> acc | [ h2 ] -> if h1 == h2 then acc else acc + 1 |
-   h2 :: t2 -> if h1 == h2 then helper [] t2 acc else helper [] t2 (acc + 1) ) |
-   h1 :: t1 -> ( match lst2 with | [] -> acc | [ h2 ] -> if h1 == h2 then acc
-   else acc + 1 | h2 :: t2 -> if h1 == h2 then helper t1 t2 acc else helper t1
-   t2 (acc + 1) )
+let reverse_string str =
+  let len = String.length str in
+  let rec reverse_helper index acc =
+    if index < 0 then acc
+    else reverse_helper (index - 1) (acc ^ String.make 1 str.[index])
+  in
+  reverse_helper (len - 1) ""
 
-   let rec lev lst1 lst2 acc = match lst1 with | [] -> List.length lst2 + acc |
-   h1 :: t1 -> begin match lst2 with | [] -> List.length lst1 + acc | h2 :: t2
-   -> if h1 = h2 then lev t1 t2 acc else min (min (lev t1 lst2 (acc + 1)) (lev
-   lst1 t2 (acc + 1))) (lev t1 t2 (acc + 1)) end *)
+let remove_punctuation str =
+  let punctuation =
+    [
+      ',';
+      '.';
+      '?';
+      '/';
+      ':';
+      ';';
+      '!';
+      '@';
+      '#';
+      '$';
+      '%';
+      '^';
+      '&';
+      '*';
+      '(';
+      ')';
+      '~';
+      '`';
+      '-';
+      '_';
+      '+';
+      '=';
+    ]
+  in
+  let rec remove_helper index acc =
+    if index >= String.length str then acc
+    else if List.mem str.[index] punctuation then remove_helper (index + 1) acc
+    else remove_helper (index + 1) (acc ^ String.make 1 str.[index])
+  in
+  remove_helper 0 ""
+
+let remove_first_letter str =
+  let words = String.split_on_char ' ' str in
+  let removed_words =
+    List.map (fun word -> String.sub word 1 (String.length word - 1)) words
+  in
+  String.concat " " removed_words
+
+let remove_last_letter (s : string) : string =
+  let words = String.split_on_char ' ' s in
+  let removedWords =
+    List.map (fun word -> String.sub word 0 (String.length word - 1)) words
+  in
+  String.concat " " removedWords
 
 let lev_mat lst1 lst2 =
   let length1 = List.length lst1 in
@@ -63,6 +125,11 @@ let lev_mat lst1 lst2 =
     done;
     matrix.(length1).(length2)
 
+let string_of_chars chars =
+  let buf = Buffer.create 16 in
+  List.iter (Buffer.add_char buf) chars;
+  Buffer.contents buf
+
 let encode s =
   List.fold_right
     (fun (r : Text_shooting.rule) acc ->
@@ -71,6 +138,13 @@ let encode s =
       | "no spaces" -> do_no_spaces acc
       | "uppercase" -> do_uppercase acc
       | "replace a's with e's" -> do_replace_a_e acc
+      | "replace i's with o's" -> do_replace_i_o acc
+      | "replace s's with z's" -> do_replace_s_z acc
+      | "double" -> string_of_chars (do_double acc)
+      | "reverse" -> reverse_string acc
+      | "remove punctuation" -> remove_punctuation acc
+      | "remove first letter" -> remove_first_letter acc
+      | "remove last letter" -> remove_last_letter acc
       | _ -> acc)
     (State.current_rules s) (State.current_prompt s)
 

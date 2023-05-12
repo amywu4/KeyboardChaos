@@ -1,9 +1,14 @@
 {
   "prompts": [
-    "This is one prompt you might get",
-    "This is another prompt you can get",
-    "This is a third prompt, wow cool!",
-    "How is there a fourth prompt? Woah."
+    "I watched coin on slope day, it sucked.",
+    "I love coin$ #imagine pool does sectors fun",
+    "Attacked ships American, tea wasn’t the King’s.",
+    "King Louis XVI’s own cousin in favour of death!",
+    "How can I show you Zen, unless you empty your cup?",
+    "Salmon Act 1986, no suspicious fish-handling!!!!",
+    "psst... martha pollack's weather machine broke",
+    "Red, WHite, BLUe. America? Incorrect. France.",
+    "sally sells seashells by the seashore... unless?"
   ],
   "rules": [
     {
@@ -20,7 +25,35 @@
     },
     {
       "name": "replace a's with e's",
-      "description": "Replace every instance of an a with an e ;)"
+      "description": "Replace every instance of an 'a' with an 'e'!"
+    },
+    {
+      "name": "replace i's with o's",
+      "description": "Replace every instance of an 'i' with an 'o'!"
+    },
+    {
+      "name": "replace s's with z's",
+      "description": "Replace every instance of an 's' with an 'z'!"
+    },
+    {
+      "name": "double",
+      "description": "Double every character that you see!"
+    },
+    {
+      "name": "reverse",
+      "description": "Type The Reverse of Your Prompt!"
+    },
+    {
+      "name": "remove punctuation",
+      "description": "Remove All Punctuations Marks From the Prompt!"
+    },
+    {
+      "name": "remove first letter",
+      "description": "Remove The First Letter of Every Word in the Prompt!"
+    },
+    {
+      "name": "remove last letter",
+      "description": "Remove The Last Letter of Every Word in the Prompt!"
     }
   ]
 }
