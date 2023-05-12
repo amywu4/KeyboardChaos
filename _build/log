@@ -3,7 +3,7 @@
 # Shared cache: disabled
 # Workspace root: /home/legendfinder/3110/zenith
 # Auto-detected concurrency: 16
-$ /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /tmp/dune_2b44f3_output
+$ /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /tmp/dune_a2bcda_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -117,3 +117,7 @@ $ /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlc.opt -config > /tmp/dune_2b44
 #      ; windows_unicode = false
 #      }
 #  }
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamldep.opt -modules -impl src/command.ml) > _build/default/src/.zenith.objs/command.ml.d
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.zenith.objs/byte -I src/.zenith.objs/native -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal -I /home/legendfinder/.opam/cs3110-2023sp/lib/seq -I /home/legendfinder/.opam/cs3110-2023sp/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Zenith -o src/.zenith.objs/native/zenith__Command.cmx -c -impl src/command.ml)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/zenith.cmxa src/.zenith.objs/native/zenith.cmx src/.zenith.objs/native/zenith__Text_shooting.cmx src/.zenith.objs/native/zenith__State.cmx src/.zenith.objs/native/zenith__Command.cmx src/.zenith.objs/native/zenith__Author.cmx)
+$ (cd _build/default && /home/legendfinder/.opam/cs3110-2023sp/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o bin/main.exe /home/legendfinder/.opam/cs3110-2023sp/lib/yojson/yojson.cmxa /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml/unix.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml -I /home/legendfinder/.opam/cs3110-2023sp/lib/ocaml /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal/ANSITerminal.cmxa -I /home/legendfinder/.opam/cs3110-2023sp/lib/ANSITerminal src/zenith.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)

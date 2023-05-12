@@ -1,7 +1,7 @@
 {
   "prompts": [
     "1 + two = 3 * 5 - 4 / 1 * three / one",
-    "one 2 3 four / 5 5 -2 * 1 * two + 1",
+    "one 2 3 four / 5 5 2 * 1 * two + 1",
     "four - three + two - one = 4 * 2 / 4"
   ],
   "rules": [
@@ -23,7 +23,7 @@
     },
     {
       "name": "minus to divide",
-      "description": "Replace every SUBTRACTION SIGN (-) with a division sign (/)!"
+      "description": "Replace every minus sign (-) with a division sign (/)!"
     }
   ]
 }

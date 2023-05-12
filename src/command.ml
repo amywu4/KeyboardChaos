@@ -79,6 +79,8 @@ let remove_punctuation str =
       '_';
       '+';
       '=';
+      '\'';
+      '\"';
     ]
   in
   let rec remove_helper index acc =
@@ -91,7 +93,11 @@ let remove_punctuation str =
 let remove_first_letter str =
   let words = String.split_on_char ' ' str in
   let removed_words =
-    List.map (fun word -> String.sub word 1 (String.length word - 1)) words
+    List.map
+      (fun word ->
+        if String.length word = 1 then ""
+        else String.sub word 1 (String.length word - 1))
+      words
   in
   String.concat " " removed_words
 
