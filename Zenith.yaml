@@ -18,7 +18,7 @@ title: "Keyboard Chaos"
 # OK if this is a Cornell Github link, but public gallery viewers won't be able to see it.
 git-repo: "https://github.coecis.cornell.edu/daq8/zenith.git"
 # If you have no demo screencast, replace the url string with an empty string ""
-demo-video-url: ""
+demo-video-url: "https://youtu.be/udGqx6jDgxI"
 # Write a short, attention-grabbing description of your project.
 desc: >
   Our project is a speed typing game with two captivating game modes: the 
