@@ -1,0 +1,11 @@
+{
+  "prompts": [
+    "jumps   JUMPS lazy LAZY suzie SUZIE sUzIe SuZiE"
+  ],
+  "rules": [
+    {
+      "name": "replace s's with z's",
+      "description": ""
+    }
+  ]
+}

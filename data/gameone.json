@@ -48,12 +48,12 @@
       "description": "Remove All Punctuation Marks From the Prompt!"
     },
     {
-      "name": "remove first letter",
-      "description": "Remove The First Letter of Every Word in the Prompt!"
+      "name": "remove first character",
+      "description": "Remove The First Character of Every Word in the Prompt!"
     },
     {
-      "name": "remove last letter",
-      "description": "Remove The Last Letter of Every Word in the Prompt!"
+      "name": "remove last character",
+      "description": "Remove The Last Character of Every Word in the Prompt!"
     }
   ]
 }

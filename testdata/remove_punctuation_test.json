@@ -1,0 +1,11 @@
+{
+  "prompts": [
+    "A, bee. It's; flying-high?!? 4/20: !@#$%^&*()"
+  ],
+  "rules": [
+    {
+      "name": "remove punctuation",
+      "description": ""
+    }
+  ]
+}

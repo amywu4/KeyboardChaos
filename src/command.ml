@@ -51,35 +51,35 @@ let do_reverse str =
   in
   reverse_helper (len - 1) ""
 
+let punctuation =
+  [
+    ',';
+    '.';
+    '?';
+    '/';
+    ':';
+    ';';
+    '!';
+    '@';
+    '#';
+    '$';
+    '%';
+    '^';
+    '&';
+    '*';
+    '(';
+    ')';
+    '~';
+    '`';
+    '-';
+    '_';
+    '+';
+    '=';
+    '\'';
+    '\"';
+  ]
+
 let do_remove_punctuation str =
-  let punctuation =
-    [
-      ',';
-      '.';
-      '?';
-      '/';
-      ':';
-      ';';
-      '!';
-      '@';
-      '#';
-      '$';
-      '%';
-      '^';
-      '&';
-      '*';
-      '(';
-      ')';
-      '~';
-      '`';
-      '-';
-      '_';
-      '+';
-      '=';
-      '\'';
-      '\"';
-    ]
-  in
   let rec remove_helper index acc =
     if index >= String.length str then acc
     else if List.mem str.[index] punctuation then remove_helper (index + 1) acc
@@ -87,18 +87,18 @@ let do_remove_punctuation str =
   in
   remove_helper 0 ""
 
-let do_remove_first_letter str =
+let do_remove_first_character str =
   let words = String.split_on_char ' ' str in
   let removed_words =
     List.map
       (fun word ->
-        if String.length word = 1 then ""
+        if String.length word <= 1 then ""
         else String.sub word 1 (String.length word - 1))
       words
   in
   String.concat " " removed_words
 
-let do_remove_last_letter (s : string) : string =
+let do_remove_last_character (s : string) : string =
   let words = String.split_on_char ' ' s in
   let removed_words =
     List.map (fun word -> String.sub word 0 (String.length word - 1)) words
@@ -127,7 +127,8 @@ let word_mult =
 let do_add_one (s : string) : string =
   let words = String.split_on_char ' ' s in
   let do_add_one_helper w =
-    if String.length w = 1 then
+    if String.length w = 0 then w
+    else if String.length w = 1 then
       try string_of_int (int_of_string w + 1) with Failure _ -> w
     else snd (List.find (fun v -> fst v = w) word_add)
   in
@@ -137,7 +138,8 @@ let do_add_one (s : string) : string =
 let do_mult_two (s : string) : string =
   let words = String.split_on_char ' ' s in
   let do_mult_two_helper w =
-    if String.length w = 1 then
+    if String.length w = 0 then w
+    else if String.length w = 1 then
       try string_of_int (int_of_string w * 2) with Failure _ -> w
     else snd (List.find (fun v -> fst v = w) word_mult)
   in
@@ -202,8 +204,8 @@ let encode s =
       | "double" -> do_double acc
       | "reverse" -> do_reverse acc
       | "remove punctuation" -> do_remove_punctuation acc
-      | "remove first letter" -> do_remove_first_letter acc
-      | "remove last letter" -> do_remove_last_letter acc
+      | "remove first character" -> do_remove_first_character acc
+      | "remove last character" -> do_remove_last_character acc
       | "add one" -> do_add_one acc
       | "mult by two" -> do_mult_two acc
       | "plus to multiply" -> do_replace_plus_mult acc
@@ -215,7 +217,7 @@ let encode s =
 let calc_points time total inc state =
   let num = float_of_int total -. float_of_int inc in
   if num < 0. then 0
-  else if time <= 0. then base_points
+  else if time <= 0. then 0
   else
     let points =
       Float.to_int

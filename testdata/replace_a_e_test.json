@@ -1,0 +1,11 @@
+{
+  "prompts": [
+    "lazy   LAZY jumped JUMPED america AMERICA aMeRiCa AmErIcA"
+  ],
+  "rules": [
+    {
+      "name": "replace a's with e's",
+      "description": ""
+    }
+  ]
+}

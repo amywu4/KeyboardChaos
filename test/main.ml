@@ -90,6 +90,11 @@ let parse_mistakes_test (name : string) (input : string) (state : State.t)
   let result = parse input state start_time end_time in
   assert_equal expected_output (snd result) ~printer:string_of_int
 
+let encode_test (name : string) (s : State.t) (expected_output : string) : test
+    =
+  name >:: fun _ ->
+  assert_equal expected_output (encode s) ~printer:(fun x -> x)
+
 let text_shooting_tests =
   [
     random_prompt_test "random prompt of dummy is a valid prompt in dummy"
@@ -150,7 +155,7 @@ let state_tests =
       3;
   ]
 
-let command_tests =
+let parse_tests =
   (* points = (net^3 / (total^2 * time/60 * (0.9^levels))) *)
   [
     parse_mistakes_test
@@ -173,16 +178,57 @@ let command_tests =
       204;
     parse_points_test "Points formula works correctly: 10 seconds, all mistakes"
       "" (init_state dummy_a) 0. 10. 0;
+    parse_points_test "Empty string at 0 time gives 0 points" ""
+      (init_state dummy_a) 0. 0. 0;
+    parse_points_test "Perfect string at 0 time still gives 0 points"
+      "The quick brown fox jumped over the lazy dog" (init_state dummy_a) 0. 0.
+      0;
     parse_points_test
       "Points formula works correctly: 10 seconds, all but one mistake" "T"
       (init_state dummy_a) 0. 10. 0;
-    parse_points_test "points cap for large points, or when time = 0"
-      "The quick brown fox jumped over the lazy dog" (init_state dummy_a) 0. 0.
+    parse_points_test "Points cap for large points"
+      "The quick brown fox jumped over the lazy dog" (init_state dummy_a) 0. 1.
       base_points;
+  ]
+
+let encode_tests =
+  [
+    encode_test "quick returns original string" (init_state dummy_a)
+      "The quick brown fox jumped over the lazy dog";
+    encode_test "no spaces removes spaces"
+      (get_adventure "no_spaces_test" |> init_state)
+      "Thequickbrownfoxjumpedoverthelazydog";
+    encode_test "uppercase makes all letters uppercase"
+      (get_adventure "uppercase_test" |> init_state)
+      "THE! QUICK BROWN! F0X JUMPED, OV3R THE LA2ZY... DOG";
+    encode_test "replace a's with e's only turns a's into e's, keeping casing"
+      (get_adventure "replace_a_e_test" |> init_state)
+      "lezy   LEZY jumped JUMPED emerice EMERICE eMeRiCe EmErIcE";
+    encode_test "replace i's with o's only turns i's into o's, keeping casing"
+      (get_adventure "replace_i_o_test" |> init_state)
+      "quock   QUOCK brown BROWN tool TOOL tOoL ToOl";
+    encode_test "replace s's with z's only turns s's into z's, keeping casing"
+      (get_adventure "replace_s_z_test" |> init_state)
+      "jumpz   JUMPZ lazy LAZY zuzie ZUZIE zUzIe ZuZiE";
+    encode_test "double doubles every character, including spaces"
+      (get_adventure "double_test" |> init_state)
+      "TThhee    qquuiicckk  bbrroowwnn  ffooxx  jjuummppeedd  oovveerr  \
+       tthhee  llaazzyy  ddoogg";
+    encode_test "reverse reverses the string"
+      (get_adventure "reverse_test" |> init_state)
+      "god yzal eht revo depmuj xof nworb kciuq    ehT";
+    encode_test "remove punctuation removes all punctuation"
+      (get_adventure "remove_punctuation_test" |> init_state)
+      "A bee Its flyinghigh 420 ";
+    encode_test
+      "remove first character works properly on 1 and 0 character words"
+      (get_adventure "remove_first_char_test" |> init_state)
+      " uick rown ox umped ver o he azy og.    est-test ";
   ]
 
 let tests =
   "zenith test suite"
-  >::: List.flatten [ text_shooting_tests; state_tests; command_tests ]
+  >::: List.flatten
+         [ text_shooting_tests; state_tests; parse_tests; encode_tests ]
 
 let _ = run_test_tt_main tests

@@ -1,0 +1,11 @@
+{
+  "prompts": [
+    "quick   QUICK brown BROWN toil TOIL tOiL ToIl"
+  ],
+  "rules": [
+    {
+      "name": "replace i's with o's",
+      "description": ""
+    }
+  ]
+}

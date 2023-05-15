@@ -4,7 +4,7 @@
   ],
   "rules": [
     {
-      "name": "remove last letter",
+      "name": "remove last character",
       "description": ""
     }
   ]
