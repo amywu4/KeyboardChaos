@@ -1,3 +1,39 @@
+(* TEST PLAN:*)
+(*>Our testing suite, most of all, was designed with the categorization of
+  separate modules in mind. Since the hierarchy of modules goes Text Shooting ->
+  State -> Command, our tests worked on the broadest module first (Text
+  Shooting) before moving into the most dependent (Command).*)
+(*>For most of our function tests, we used Black Box Testing to determine if our
+  comment specifications matched the output of the function. This was easiest
+  for Text Shooting and State, as it simply involved pulling data that already
+  exists and can be simply manipulated. To avoid the indeterminacy caused by the
+  use of Random in functions such as random_rule and random_prompt, we used
+  specifically test-oriented JSON files only containing a single rule and prompt
+  we know the contents of.*)
+(*>Black Box Testing couldn't work with Command, as it involved many algorithms
+  and helper functions hidden from the user. Among these are the points formula,
+  the levenshtein distance algorithm, and helper functions for every rule
+  currently available in the game. To test these, we had to use Glass Box
+  Testing and look at our own understandings of what is supposed to be correct.
+  We know what our points formula is in a mathematical sense, we know how many
+  mistakes will be in a given string, and we know what each rule is supposed to
+  look for, so Command's functions were tested with these prior understandings
+  in mind.*)
+(*>Even with Glass Box Testing, not everything can be properly tested. Because
+  rules are pulled randomly and in random orders, it's impossible to
+  comprehensively check every combination of rules in tandem to see if they
+  function correctly. Additionally, we also can't test with OUnit whether a
+  random function is truly random. In both of these cases, we had to test
+  manually by just playing our game over and over again until we come across a
+  combination or quirk that needs to be ironed out. Because we had a game plan
+  going into our project to make sure our rules influence the products of other
+  rules as little as possible, there are only very few combinations of rules
+  that we believe could lead to special side effects, and we have tested all of
+  these combinations.*)
+(*>By understanding the contents of our code and specifications, and coming up
+  with edge cases to test the correctness of, we believe our test suite
+  demonstrates the correctness of our system as a whole.*)
+
 open OUnit2
 open Zenith
 open Text_shooting
