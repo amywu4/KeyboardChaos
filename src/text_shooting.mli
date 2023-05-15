@@ -34,12 +34,6 @@ val rule_name : rule -> string
 val rule_description : rule -> string
 (** [rule_description r] is the description of a rule [r] *)
 
-(*val get_rules_names : t -> string list (** [get_rules_names j] is a list of
-  names of rules that [j] has *)
-
-  val get_rules_descriptions : t -> string list (** [get_rules_descriptions r]
-  is the description of rule [r] *) *)
-
 val get_rules : t -> rule list
 (** [get_rules_names j] is a list of rules that [j] has *)
 
