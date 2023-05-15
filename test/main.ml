@@ -198,32 +198,125 @@ let encode_tests =
     encode_test "no spaces removes spaces"
       (get_adventure "no_spaces_test" |> init_state)
       "Thequickbrownfoxjumpedoverthelazydog";
+    parse_mistakes_test "no spaces: one mistake for each space kept"
+      "The quick   brown fox jumped      over the  lazy   dog"
+      (get_adventure "no_spaces_test" |> init_state)
+      0. 10. 18;
     encode_test "uppercase makes all letters uppercase"
       (get_adventure "uppercase_test" |> init_state)
       "THE! QUICK BROWN! F0X JUMPED, OV3R THE LA2ZY... DOG";
+    parse_mistakes_test
+      "uppercase: one mistake for every LOWERCASE character kept"
+      "The! quick brown! f0x jumped, ov3r the la2zy... dog"
+      (get_adventure "uppercase_test" |> init_state)
+      0. 10. 33;
     encode_test "replace a's with e's only turns a's into e's, keeping casing"
       (get_adventure "replace_a_e_test" |> init_state)
       "lezy   LEZY jumped JUMPED emerice EMERICE eMeRiCe EmErIcE";
+    parse_mistakes_test "replace a e: one mistake for every a kept"
+      "lazy   LAZY jumped JUMPED america AMERICA aMeRiCa AmErIcA"
+      (get_adventure "replace_a_e_test" |> init_state)
+      0. 10. 10;
     encode_test "replace i's with o's only turns i's into o's, keeping casing"
       (get_adventure "replace_i_o_test" |> init_state)
       "quock   QUOCK brown BROWN tool TOOL tOoL ToOl";
+    parse_mistakes_test "replace i o: one mistake for every i kept"
+      "quick   QUICK brown BROWN toil TOIL tOiL ToIl"
+      (get_adventure "replace_i_o_test" |> init_state)
+      0. 10. 6;
     encode_test "replace s's with z's only turns s's into z's, keeping casing"
       (get_adventure "replace_s_z_test" |> init_state)
       "jumpz   JUMPZ lazy LAZY zuzie ZUZIE zUzIe ZuZiE";
+    parse_mistakes_test "replace s z: one mistake for every s kept"
+      "jumps   JUMPS lazy LAZY suzie SUZIE sUzIe SuZiE"
+      (get_adventure "replace_s_z_test" |> init_state)
+      0. 10. 6;
     encode_test "double doubles every character, including spaces"
       (get_adventure "double_test" |> init_state)
       "TThhee    qquuiicckk  bbrroowwnn  ffooxx  jjuummppeedd  oovveerr  \
        tthhee  llaazzyy  ddoogg";
+    parse_mistakes_test
+      "double: mistakes for not doing rule = length of original string"
+      "The  quick brown fox jumped over the lazy dog"
+      (get_adventure "double_test" |> init_state)
+      0. 10. 45;
     encode_test "reverse reverses the string"
       (get_adventure "reverse_test" |> init_state)
       "god yzal eht revo depmuj xof nworb kciuq    ehT";
     encode_test "remove punctuation removes all punctuation"
       (get_adventure "remove_punctuation_test" |> init_state)
       "A bee Its flyinghigh 420 ";
+    parse_mistakes_test
+      "remove punctuation: one mistake for every punctuation kept"
+      "A, bee. It's; flying-high?!? 4/20: !@#$%^&*()"
+      (get_adventure "remove_punctuation_test" |> init_state)
+      0. 10. 20;
     encode_test
       "remove first character works properly on 1 and 0 character words"
       (get_adventure "remove_first_char_test" |> init_state)
       " uick rown ox umped ver o he azy og.    est-test ";
+    parse_mistakes_test
+      "remove first character: one mistake for every character not removed"
+      "A quick brown fox jumped over to the lazy dog.   . test-test I"
+      (get_adventure "remove_first_char_test" |> init_state)
+      0. 10. 13;
+    encode_test
+      "remove last character works properly on 1 and 0 character words"
+      (get_adventure "remove_last_char_test" |> init_state)
+      " quic brow fo jumpe ove t th laz dog    test-tes ";
+    parse_mistakes_test
+      "remove last character: one mistake for every character not removed"
+      "A quick brown fox jumped over to the lazy dog.   . test-test I"
+      (get_adventure "remove_last_char_test" |> init_state)
+      0. 10. 13;
+    encode_test
+      "reversing + remove first character = remove last character + reverse"
+      (get_adventure "reverse_remove_first"
+      |> init_state
+      |> next_level 0 (get_adventure "reverse_remove_first"))
+      (encode
+         (get_adventure "remove_last_reverse"
+         |> init_state
+         |> next_level 0 (get_adventure "remove_last_reverse")));
+    encode_test
+      "reversing + remove last character = remove first character + reverse"
+      (get_adventure "reverse_remove_last"
+      |> init_state
+      |> next_level 0 (get_adventure "reverse_remove_last"))
+      (encode
+         (get_adventure "remove_first_reverse"
+         |> init_state
+         |> next_level 0 (get_adventure "remove_first_reverse")));
+    encode_test "plus to multiply only turns +'s into *'s"
+      (get_adventure "plus_to_mult_test" |> init_state)
+      "1 * 1 * 2 one * one * two";
+    parse_mistakes_test "plus to multiply: one mistake for every + kept"
+      "1 + 1 * 2 one + one * two"
+      (get_adventure "plus_to_mult_test" |> init_state)
+      0. 10. 2;
+    encode_test "minus to div only turns -'s into /'s"
+      (get_adventure "minus_to_div_test" |> init_state)
+      "1 / 1 / 2 one / one / two";
+    parse_mistakes_test "minus to div: one mistake for every - kept"
+      "1 - 1 / 2 one - one / two"
+      (get_adventure "minus_to_div_test" |> init_state)
+      0. 10. 2;
+    encode_test "add one works on positive numbers and select words"
+      (get_adventure "add_one_test" |> init_state)
+      "5 4 3 2 1 two three four five";
+    encode_test "mult by two works on positive numbers and select words"
+      (get_adventure "mult_two_test" |> init_state)
+      "8 6 4 2 0 two four six eight";
+    encode_test "add one then mult by two correctly applies the order"
+      (get_adventure "add_then_mult"
+      |> init_state
+      |> next_level 0 (get_adventure "add_then_mult"))
+      "10 8 6 4 2 four six eight ten";
+    encode_test "mult by two then add one correctly applies the order"
+      (get_adventure "mult_then_add"
+      |> init_state
+      |> next_level 0 (get_adventure "mult_then_add"))
+      "9 7 5 3 1 three five seven nine";
   ]
 
 let tests =

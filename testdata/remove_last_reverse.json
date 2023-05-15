@@ -4,11 +4,11 @@
   ],
   "rules": [
     {
-      "name": "reverse",
+      "name": "remove last character",
       "description": ""
     },
     {
-      "name": "remove last character",
+      "name": "reverse",
       "description": ""
     }
   ]

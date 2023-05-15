@@ -1,10 +1,10 @@
 {
   "prompts": [
-    "4 3 2 1 0 one two three four"
+    "1 + 1 * 2 one + one * two"
   ],
   "rules": [
     {
-      "name": "add one",
+      "name": "plus to multiply",
       "description": ""
     }
   ]

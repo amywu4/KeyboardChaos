@@ -101,7 +101,11 @@ let do_remove_first_character str =
 let do_remove_last_character (s : string) : string =
   let words = String.split_on_char ' ' s in
   let removed_words =
-    List.map (fun word -> String.sub word 0 (String.length word - 1)) words
+    List.map
+      (fun word ->
+        if String.length word <= 1 then ""
+        else String.sub word 0 (String.length word - 1))
+      words
   in
   String.concat " " removed_words
 
@@ -111,8 +115,8 @@ let word_add =
     ("two", "three");
     ("three", "four");
     ("four", "five");
-    ("six", "twelve");
-    ("eight", "sixteen");
+    ("six", "seven");
+    ("eight", "nine");
   ]
 
 let word_mult =
