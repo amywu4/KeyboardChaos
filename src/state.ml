@@ -33,11 +33,6 @@ let current_prompt s = s.prompt
 let current_rules s = s.rulesused
 let available_rules s = s.rulesleft
 
-let rule_exists r s =
-  match List.find_opt (fun x -> x = r) (current_rules s) with
-  | None -> false
-  | Some _ -> true
-
 let next_level pts a s =
   let new_rule = Text_shooting.random_rule s.rulesleft in
   {

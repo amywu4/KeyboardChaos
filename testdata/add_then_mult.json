@@ -1,0 +1,15 @@
+{
+  "prompts": [
+    "4 3 2 1 0 one two three four"
+  ],
+  "rules": [
+    {
+      "name": "add one",
+      "description": ""
+    },
+    {
+      "name": "mult by two",
+      "description": ""
+    }
+  ]
+}

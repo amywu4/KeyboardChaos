@@ -1,0 +1,11 @@
+{
+  "prompts": [
+    "A quick brown fox jumped over to the lazy dog. test-test I"
+  ],
+  "rules": [
+    {
+      "name": "remove last letter",
+      "description": ""
+    }
+  ]
+}

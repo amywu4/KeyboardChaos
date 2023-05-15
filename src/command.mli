@@ -1,7 +1,4 @@
-val base_points : float
-val max_incorrect : float
-val base_seconds : float
-val additional_seconds : float
+val base_points : int
 
 val encode : State.t -> string
 (** [encode s] determines what the correct string of text to type would have

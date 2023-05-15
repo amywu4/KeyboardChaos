@@ -1,0 +1,19 @@
+{
+  "prompts": [
+    "The quick brown fox jumped over the lazy dog"
+  ],
+  "rules": [
+    {
+      "name": "quick",
+      "description": "Type the prompt as quickly as you can!"
+    },
+    {
+      "name": "filler",
+      "description": "Blah blah blah blah"
+    },
+    {
+      "name": "filler2",
+      "description": "Blah blah blah blah"
+    }
+  ]
+}

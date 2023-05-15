@@ -1,0 +1,15 @@
+{
+  "prompts": [
+    "A quick brown fox jumped over to the lazy dog. test-test I"
+  ],
+  "rules": [
+    {
+      "name": "reverse",
+      "description": ""
+    },
+    {
+      "name": "remove first letter",
+      "description": ""
+    }
+  ]
+}

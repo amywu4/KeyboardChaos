@@ -1,0 +1,11 @@
+{
+  "prompts": [
+    "4 3 2 1 0 -1 -2 -3 one two three four"
+  ],
+  "rules": [
+    {
+      "name": "add one",
+      "description": ""
+    }
+  ]
+}

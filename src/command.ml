@@ -1,7 +1,4 @@
-let base_points = 1000.
-let max_incorrect = 20.
-let base_seconds = 60.
-let additional_seconds = 30.
+let base_points = 1000
 let str_to_chars s = List.init (String.length s) (String.get s)
 let chars_to_str cs = String.concat "" (List.map (String.make 1) cs)
 let do_quick s = s
@@ -54,7 +51,7 @@ let do_reverse str =
   in
   reverse_helper (len - 1) ""
 
-let remove_punctuation str =
+let do_remove_punctuation str =
   let punctuation =
     [
       ',';
@@ -90,7 +87,7 @@ let remove_punctuation str =
   in
   remove_helper 0 ""
 
-let remove_first_letter str =
+let do_remove_first_letter str =
   let words = String.split_on_char ' ' str in
   let removed_words =
     List.map
@@ -101,7 +98,7 @@ let remove_first_letter str =
   in
   String.concat " " removed_words
 
-let remove_last_letter (s : string) : string =
+let do_remove_last_letter (s : string) : string =
   let words = String.split_on_char ' ' s in
   let removed_words =
     List.map (fun word -> String.sub word 0 (String.length word - 1)) words
@@ -204,9 +201,9 @@ let encode s =
       | "replace s's with z's" -> do_replace_s_z acc
       | "double" -> do_double acc
       | "reverse" -> do_reverse acc
-      | "remove punctuation" -> remove_punctuation acc
-      | "remove first letter" -> remove_first_letter acc
-      | "remove last letter" -> remove_last_letter acc
+      | "remove punctuation" -> do_remove_punctuation acc
+      | "remove first letter" -> do_remove_first_letter acc
+      | "remove last letter" -> do_remove_last_letter acc
       | "add one" -> do_add_one acc
       | "mult by two" -> do_mult_two acc
       | "plus to multiply" -> do_replace_plus_mult acc
@@ -214,17 +211,21 @@ let encode s =
       | _ -> acc)
     (State.current_rules s) (State.current_prompt s)
 
-(* let calc_points time inc state = Float.to_int (base_points *. ((max_incorrect
-   -. float_of_int inc) /. max_incorrect) /. (base_points *. ((max_incorrect -.
-   float_of_int inc) /. max_incorrect)) ** (time /. (base_seconds +.
-   (additional_seconds *. float_of_int (State.current_level state)) ))) *)
-
-let calc_points_2 time total inc state =
+(* points = min of 1000 vs (net^3 / (total^2 * time/60 * (0.9^levels))) *)
+let calc_points time total inc state =
   let num = float_of_int total -. float_of_int inc in
   if num < 0. then 0
+  else if time <= 0. then base_points
   else
-    Float.to_int
-      (num /. (time *. (0.9 ** float_of_int (State.current_level state)) /. 60.))
+    let points =
+      Float.to_int
+        ((num ** 3.)
+        /. ((float_of_int total ** 2.)
+           *. time
+           *. (0.9 ** float_of_int (State.current_level state))
+           /. 60.))
+    in
+    min points base_points
 
 let parse input state start_time end_time =
   let time_diff = end_time -. start_time in
@@ -234,4 +235,4 @@ let parse input state start_time end_time =
     List.init (String.length correct_answer) (String.get correct_answer)
   in
   let inc = lev_mat input_char_list prompt_char_list in
-  (calc_points_2 time_diff (List.length input_char_list) inc state, inc)
+  (calc_points time_diff (List.length prompt_char_list) inc state, inc)
