@@ -83,6 +83,6 @@ opam install ANSITerminal
 
 3. Then type the command "make play" in the terminal.
 
-4. The name of the game file you want to load is: dummy.
+4. You have two gamemodes you can play. Either type "standard" or "math" when prompted to do so.
 
 5. From there, follow the in game instructions and enjoy! 
