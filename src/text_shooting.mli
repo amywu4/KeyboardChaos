@@ -1,4 +1,7 @@
-(** The abstract type of values representing prompts and rules. *)
+(** Representation of static gamemode data.
+
+    This module represents the data stored in gamemode files. It handles loading
+    of that data from JSON as well as querying the data.*)
 
 type rule = {
   name : string;
@@ -13,9 +16,14 @@ type t = {
   prompts : prompt list;
   rules : rule list;
 }
+(** The type of values representing the gamemode's prompts and rules. *)
 
 exception NoPrompts
+(** Raised when the gamemode has no prompts, and a call is made to receive a
+    prompt.*)
+
 exception NoRules
+(** Raised when the gamemode has no rules, and a call is made to receive a rule.*)
 
 val from_json : Yojson.Basic.t -> t
 (** [from_json j] is the representation of prompts or rules that [j] represents.

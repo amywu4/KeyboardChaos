@@ -1,4 +1,8 @@
+(** Parsing of player commands. *)
+
 val base_points : int
+(** [base_points] is the maximum cap to points a player can earn in a single
+    level.*)
 
 val encode : State.t -> string
 (** [encode s] determines what the correct string of text to type would have
