@@ -339,20 +339,20 @@ let encode_tests =
       0. 10. 2;
     encode_test "add one works on positive numbers and select words"
       (get_adventure "add_one_test" |> init_state)
-      "5 4 3 2 1 two three four five";
+      "6 5 4 3 2 1 two three four five";
     encode_test "mult by two works on positive numbers and select words"
       (get_adventure "mult_two_test" |> init_state)
-      "8 6 4 2 0 two four six eight";
+      "10 8 6 4 2 0 two four six eight";
     encode_test "add one then mult by two correctly applies the order"
       (get_adventure "add_then_mult"
       |> init_state
       |> next_level 0 (get_adventure "add_then_mult"))
-      "10 8 6 4 2 four six eight ten";
+      "12 10 8 6 4 2 four six eight ten";
     encode_test "mult by two then add one correctly applies the order"
       (get_adventure "mult_then_add"
       |> init_state
       |> next_level 0 (get_adventure "mult_then_add"))
-      "9 7 5 3 1 three five seven nine";
+      "11 9 7 5 3 1 three five seven nine";
   ]
 
 let tests =
