@@ -9,95 +9,85 @@ let congratulatory_msg () =
     \        \
      /\\                                                                \
      /\\                                                      \
-     /\\                                                  /\\";
+     /\\                                                  ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \        \\/                              \
      /\\                                \\/                           \
-     /\\                         \\/                              \
-     /\\                  \\/";
+     /\\                         \\/                              ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                                        \
-     \\/                                                             \
-     \\/                                                         \\/";
+     \\/                                                             \\/   ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                        \
      /\\                                                                 \
      /\\                                                      \
-     /\\                                              /\\";
+     /\\                                          ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                        \\/                               \
      /\\                                \\/                           \
-     /\\                         \\/                         \
-     /\\                   \\/";
+     /\\                         \\/                         ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                                                         \
      \\/                                                             \
-     \\/                                                    \\/";
+     \\/                                                    ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \     /\\                                                                \
      /\\                                                      \
-     /\\                                                         /\\";
+     /\\                                                        ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \     \\/                              /\\                                \
      \\/                           /\\                         \
-     \\/                              /\\                         \\/";
+     \\/                             ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                                     \
      \\/                                                             \
-     \\/                                                         \\/";
+     \\/                                                    ";
   ANSITerminal.print_string [ ANSITerminal.magenta ] "\n";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
-    \         _______     _____      ____    ___    _______    \
-     _______          ___      ___________    ___   ___    ___             \
-     ___       ___________    ___     _____      ____    ___    _______";
+    \                    _______     _____      ____    ___    _______     \
+     _______         ___        _____________     _______";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
-    \        |       |   /      \\   |    \\  |   |  |       |  |        \
-     \\       /   \\    |           |  |   | |   |  |   |           /   \\     \
-     |           |  |   |   /      \\   |    \\  |   |  /       \\";
+    \                   |       |   /      \\   |    \\  |   |  |       |  \
+     |         \\      /   \\      |             |   /       \\";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
-    \        |    ___|  |        |  |     \\ |   |  |    ___|  |    |    |     \
-     /  |  \\   |____   ____|  |   | |   |  |   |          /  |  \\    |____   \
-     ____|  |   |  |        |  |     \\ |   |  \\   /   / ";
+    \                   |    ___|  |        |  |     \\ |   |  |    ___|  |    \
+     |    |     /  |  \\     |____     ____|   \\   /   /";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
-    \        |   |___   |    |   |  |      \\|   |  |    |  |  |        /     \
-     /   _   \\      |   |      |   |_|   |  |   |____     /   _   \\       \
-     |   |      |   |  |    |   |  |      \\|   |   \\     \\";
+    \                   |   |___   |    |   |  |      \\|   |  |    |  |  \
+     |        /     /   _   \\         |   |         \\     \\";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
-    \        |       |  |        |  |   |\\      |  |       |  |   |\\   \\    \
-     /   / \\   \\     |   |      |         |  |        |   /   / \\   \\      \
-     |   |      |   |  |        |  |   |\\      |  /   \\   \\";
+    \                   |       |  |        |  |   |\\      |  |       |  |   \
+     |\\   \\    /   / \\   \\        |   |        /   \\   \\";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
-    \        |_______|   \\______/   |___| \\_____|  |_______|  |___| \\___\\  \
-     /___/   \\___\\    |___|      |_________|  |________|  /___/   \
-     \\___\\     |___|      |___|   \\______/   |___| \\_____|  \\_______/";
+    \                   |_______|   \\______/   |___| \\_____|  |_______|  \
+     |___| \\___\\  /___/   \\___\\       |___|        \\_______/";
   ANSITerminal.print_string [ ANSITerminal.magenta ] "\n";
   ANSITerminal.print_string [ ANSITerminal.magenta ] "\n";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \    /\\                                                 \
      /\\                                                           \
-     /\\                                                                            \
-     /\\";
+     /\\                                                                            ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \    \\/                       /\\                        \
      \\/                              /\\                           \
      \\/                                   \
-     /\\                                       \\/";
+     /\\                                      ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                             \
@@ -107,29 +97,28 @@ let congratulatory_msg () =
     "\n\
     \                /\\                                                 \
      /\\                                                           \
-     /\\                                                    /\\";
+     /\\                                                ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                \\/                       /\\                        \
      \\/                              /\\                           \
-     \\/                                   /\\               \\/";
+     \\/                                   ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                                         \
      \\/                                                        \
-     \\/                                                                \\/";
+     \\/                                                            ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \    /\\                                              \
      /\\                                                           \
-     /\\                                                                            \
-     /\\";
+     /\\                                                                            ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \    \\/                    /\\                        \
      \\/                              /\\                           \
      \\/                                   \
-     /\\                                       \\/";
+     /\\                                   ";
   ANSITerminal.print_string [ ANSITerminal.magenta ]
     "\n\
     \                          \
@@ -718,7 +707,8 @@ let main () =
   | answer ->
       if String.lowercase_ascii answer = "y" then (
         print_endline
-          "Please enter the name of the game file you want to load.\n";
+          "Please enter the name of the gamemode you want to play. There's \
+           'standard' and 'math' modes available.\n";
         print_string "> ";
         match read_line () with
         | exception End_of_file -> ()

@@ -132,7 +132,7 @@ let do_add_one (s : string) : string =
   let words = String.split_on_char ' ' s in
   let do_add_one_helper w =
     if String.length w = 0 then w
-    else if String.length w = 1 then
+    else if String.length w < 3 then
       try string_of_int (int_of_string w + 1) with Failure _ -> w
     else snd (List.find (fun v -> fst v = w) word_add)
   in
@@ -143,7 +143,7 @@ let do_mult_two (s : string) : string =
   let words = String.split_on_char ' ' s in
   let do_mult_two_helper w =
     if String.length w = 0 then w
-    else if String.length w = 1 then
+    else if String.length w < 3 then
       try string_of_int (int_of_string w * 2) with Failure _ -> w
     else snd (List.find (fun v -> fst v = w) word_mult)
   in
