@@ -16,8 +16,8 @@ Project Overseers
 - Grader: Seth Norman (san72@cornell.edu)
 
 Course Instructors
-- Justin Hsu
 - Dexter Kozen
+- Justin Hsu
 
 ## Important Commands
 1. `make build` : Builds the code in `src/`
